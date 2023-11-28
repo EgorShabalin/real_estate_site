@@ -1,0 +1,120 @@
+{% extends 'my_site/base.html' %}
+
+{% block content %}
+
+<h2 class='page_heading'>PROPERTY DETAILS</h2>
+
+<div class='property_detail_view'>
+
+    <div class='title_container'>
+
+        <h4 id='grey_title' style="color:grey;">ID: {{ property_detail.id }}</h4>
+        
+        <h3>{{ property_detail.title }}</h3>
+    
+    </div>
+
+    <div class='property_detail_image'>
+
+        {% if images %}
+
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+
+            {% for image in images %}
+
+            <div class="mySlides fade" >
+
+                <img class='detail_image' src="{{ image.photo.url }}" alt="Image no:{{ forloop.counter }}">
+
+            </div>
+
+            {% endfor %}        
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <script>
+            let slideIndex = 1;
+            showSlides(slideIndex);
+
+            // Next/previous controls
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+
+            // Thumbnail image controls
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                if (n > slides.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " active";
+            }
+        </script>
+
+    </div>
+
+    {% endif %}
+
+    <div class='description'>
+
+        <div class='descriptions_detail'>        
+
+            <p style="color: black"><b>Price: {{ property_detail.price }} TL</b></p>
+
+            <p>Category: {{ property_detail.category }}</p>
+                        
+            <p>Province: {{ property_detail.province }}</p>
+
+            <p>District: {{ property_detail.district }}</p>
+
+            <p>Rooms: {{ property_detail.rooms }}</p>
+
+            <p>Heating: {{ property_detail.heating }}</p>
+
+            <p>Total area: {{ property_detail.area }} sq.m </p>
+
+            {% if roperty_detail.address %}
+
+                <p>Address: {{ property_detail.address }}</p>
+
+            {% endif %}
+
+            <a class="button" href="#">BUY IT NOW</a>
+
+            <br>
+
+            <br>
+
+        </div>
+
+        <div class='description_text'>
+
+            <p>{{ property_detail.description }}</p>            
+        
+        </div>
+
+    </div>
+
+    
+
+</div>
+
+{% endblock %}

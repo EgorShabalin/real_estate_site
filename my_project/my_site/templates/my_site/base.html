@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+
+<html>
+
+    <head>
+
+        <meta name="viewport" charset='UTF-8' content="width=device-width, initial-scale=1.0">
+
+        <title>HAKAN ARSLAN EMLAK</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'my_site/base.css' %}">
+
+    </head>
+
+    <body>
+
+        <a href="{% url 'my_site:index' %}"><div class='header'>
+
+            <h1 class='logo'>HAKAN ARSLAN EMLAK</h1>
+
+            <div></div>
+
+        </div></a>
+
+        <div class='main_menu_container'>
+       
+            <div class='main_menu'>
+
+                <a class='button_menu' href="{% url 'my_site:property_for_sale_list_view' %}">FOR SALE</a>
+
+                <a class='button_menu' href="{% url 'my_site:property_for_rent_list_view' %}">FOR RENT</a>
+
+                <a class='button_menu' href='#'>OUR TEAM</a>
+
+                <a class='button_menu' href='#'>FAQ</a>
+                
+                <a class='button_menu' href="{% url 'my_site:contacts' %}">CONTACTS</a>
+
+            </div>
+        
+        </div>
+
+        <div>
+
+
+
+        </div>
+
+        {% block content %}
+
+        {% endblock %}
+
+        <footer>
+            
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <div class="footer">
+                <div class="row">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </div>
+
+                <div class="row">
+                    <ul>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>                        
+                    </ul>
+                </div>
+
+                <div class="row">
+                    HAKAN ARSLAN EMLAK Copyright © 2021 HAKAN ARSLAN EMLAK Copyright - All rights reserved || Created By: <a href="mailto:egor.shabalin.wd@gmail.com"><b>Egor Shabalin</b></a>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+
+</html>

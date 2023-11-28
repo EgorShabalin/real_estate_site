@@ -1,0 +1,362 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.header {
+    background-color: rgb(25, 103, 134);
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width: 100%;
+    height: 5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.index_image {
+    z-index: -1000;
+    position: absolute;
+}
+
+.main_menu {
+    background-image: url('index_image2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 18em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    color: white;
+}
+
+.page_heading {
+    margin: 0 20px 20px 20px;
+}
+
+.property_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.property_list_item {
+    max-width: fit-content;
+    padding: 0 0 20px 20px;
+    margin: 0 20px 20px 20px;
+    border-style: solid;
+    border-color: rgb(0, 82, 114);
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.photo_and_description {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: baseline;
+}
+
+.img_small {
+    max-width: 300px;
+    float: left;
+    margin: 0 1em 0 0;
+    padding: 0;
+}
+
+.small_card_description {
+    width: fit-content;
+    margin: 0 1em 1em 0;
+    color: rgb(78, 78, 78);
+}
+
+.button {
+    background-color: rgb(21, 86, 112);
+    color: white;
+    text-align: center;
+    border-style: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px 5px 10px;
+}
+
+.button_menu {
+    background-color: rgb(0, 82, 114);
+    color: white;
+    text-align: center;
+    width: 10em;
+    height: fit-content;
+    padding: 10px 50px 10px 50px;
+    margin: 0 0 1px 1px;
+}
+
+h2 {
+    color: rgb(0, 82, 114);
+    max-width: fit-content;
+}
+
+h3 {
+    color: rgb(0, 82, 114);
+    max-width: fit-content;
+    margin-right: 20px;
+}
+
+.property_detail_view {
+    margin: auto;
+    padding: 0 20px 20px 20px;
+    min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.title_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+#grey_title {
+    padding: 0 5px 0 0;
+}
+
+.property_detail_image {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.detail_image {
+    display: flex;
+    width: 1300px;
+    height: auto;
+}
+
+.description {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: justify;
+}
+
+.descriptions_detail {
+    margin-right: 20px;
+    color: rgb(78, 78, 78);
+}
+
+.description_text {
+    max-width: 50%;
+
+}
+
+.content {
+    margin-bottom: 20px;
+}
+
+footer {
+    display: block;
+    width: 100%;
+
+}
+
+.down_contacts {
+    background-color: rgb(201, 240, 255);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+footer a {
+    color: rgb(21, 86, 112);
+}
+
+.footer {
+    background: rgb(25, 103, 134);
+    padding: 30px 0px;
+    font-family: 'Play', sans-serif;
+    text-align: center;
+}
+
+.footer .row {
+    width: 100%;
+    margin: 1% 0%;
+    padding: 0.6% 0%;
+    color: rgba(255, 255, 255, 0.644);
+    font-size: 0.8em;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.644);
+    transition: 0.5s;
+}
+
+.footer .row a:hover {
+    color: #fff;
+}
+
+
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0px 30px;
+}
+
+.footer .row a i {
+    font-size: 2em;
+    margin: 0% 1%;
+}
+
+@media (max-width:720px) {
+
+    .page_heading {
+        margin: 0 0 10px 10px;
+        padding: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin: 10px 0 0 0;
+        padding: 0 10px 10px 0;
+    }
+
+    .property_detail_view {
+        width: 100%;
+        margin: 0;
+        padding: 0 0 10px 10px;
+    }
+
+    .property_detail_image {
+        margin: 0;
+        padding: 0;
+        justify-content: left;
+    }
+
+
+    .descriptions_detail {
+        margin-right: 10px;
+        width: fit-content;
+        object-fit: scale-down;
+    }
+
+    .footer {
+        text-align: left;
+        padding: 5%;
+    }
+
+    .footer .row ul li {
+        display: block;
+        margin: 10px 0px;
+        text-align: left;
+    }
+
+    .footer .row a i {
+        margin: 0% 3%;
+    }
+}
+
+@media (max-width:1320px) {
+
+    .main_menu_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main_menu {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .detail_image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
+
+
+/* Slideshow container */
+.slideshow-container {
+    width: fit-content;
+    height: auto;
+    position: relative;
+    margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    width: auto;
+    margin-top: 0;
+    padding: 20% 16px 20% 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}

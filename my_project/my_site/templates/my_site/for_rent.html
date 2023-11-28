@@ -1,0 +1,69 @@
+{% extends 'my_site/base.html' %}
+
+{% block content %}
+
+<h2 class='page_heading'>ALL PROPERTIES FOR RENT</h2>
+
+<div class="property_list">
+
+    {% if for_rent %}
+
+    {% for item in for_rent %}
+
+    <a style="text-decoration: none; color: black" href="{% url 'my_site:property_detail_view' item.id %}">
+
+    <div class='property_list_item'>
+
+        <h3>{{ item.title }}</h3>        
+
+        <div class='photo_and_description'>
+
+            {% if item.photos.first %}
+        
+            <div class='property_img_small'>
+                
+                <img class='img_small' src="{{ item.photos.first.photo.url }}" alt="img">
+            
+            </div>
+
+            {% else %}
+
+            <div class='property_img_small'>
+                
+                <img class='img_small' src="/static/my_site/no_image_yet.jpg" alt="img">
+            
+            </div>
+
+            {% endif %}
+
+            <div class='small_card_description'>
+                
+            
+                
+                <p>Province: {{ item.province }}</p>
+
+                <p>District: {{ item.district }}</p>
+
+                <p>Rooms: {{ item.rooms }}</p>
+
+                <p style="color: black"><b>Price: {{ item.price }} TL</b></p>
+
+                
+            
+            </div>
+        
+        </div>
+    
+    </div></a>
+
+    {% endfor %}
+
+    {% else %}
+
+    <h3>NO OFFERS FOR RENT YET</h3>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
