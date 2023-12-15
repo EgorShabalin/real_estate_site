@@ -33,7 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
-    "*.onrender.com",
+    "real-estate-3kqa.onrender.com",
 ]
 
 
