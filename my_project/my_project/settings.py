@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
     "real-estate.onrender.com",
+    "real-estate-3kqa.onrender.com",
 ]
 
 
