@@ -36,6 +36,8 @@ ALLOWED_HOSTS = [
     "real-estate-3kqa.onrender.com",
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://real-estate-3kqa.onrender.com"]
+
 
 # Application definition
 
