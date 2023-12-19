@@ -6,6 +6,17 @@ HEATING_CHOICES = (
     ("ELECTRIC", "Electric Boiler heating"),
 )
 
+PARKING_TYPE = (
+    ("PARKING ON THE STREET", "STREET"),
+    ("PARKING ON SITE", "ON SITE"),
+    ("ROOFED PARKING ON SITE", "ROOFED ON SITE"),
+    ("UNDERGROUND PARKING", "UNDERGROUND"),
+)
+
+ELEVATOR = (
+    ("Yes", "YES"),
+    ("No", "NO"),
+)
 
 PROPERTY_TYPES = (
     ("APARTMENT", "Apartment"),

@@ -9,6 +9,8 @@ from config import (
     IL_LIST,
     ANTALYA_DIST_LIST,
     DEAL_TYPES,
+    PARKING_TYPE,
+    ELEVATOR,
 )
 
 
@@ -44,6 +46,22 @@ class Heating(models.Model):
         verbose_name_plural = "Heating types"
 
 
+class Parking(models.Model):
+    type = models.CharField(
+        max_length=25,
+        choices=PARKING_TYPE,
+        default="PARKING ON THE STREET",
+        blank=False,
+        null=False,
+    )
+
+    def __str__(self) -> str:
+        return self.type
+
+    class Meta:
+        verbose_name_plural = "Parking types"
+
+
 class Property(models.Model):
     title = models.CharField(max_length=250, verbose_name=_("title"))
     price = models.DecimalField(max_digits=10, decimal_places=0)
@@ -54,10 +72,18 @@ class Property(models.Model):
         max_length=50, choices=ANTALYA_DIST_LIST, blank=True, null=True
     )
     address = models.CharField(max_length=250, blank=True, null=True)
+    floor_number = models.DecimalField(max_digits=2, decimal_places=0, default=0)
+    total_floors = models.DecimalField(max_digits=2, decimal_places=0, default=0)
+    parking = models.ForeignKey(
+        Parking, on_delete=models.CASCADE, null=False, default=[1]
+    )
     rooms = models.CharField(max_length=200)
     area = models.CharField(max_length=200)
     heating = models.ForeignKey(
         Heating, on_delete=models.CASCADE, null=False, default=[1]
+    )
+    elevator = models.CharField(
+        max_length=50, choices=ELEVATOR, default="NO", blank=False, null=False
     )
     description = models.TextField()
     category = models.ForeignKey(

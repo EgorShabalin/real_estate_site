@@ -85,11 +85,17 @@
 
             <p>District: {{ property_detail.district }}</p>
 
+            <p>Floor: {{ property_detail.floor_number }} of {{ property_detail.total_floors }}</p>
+
+            <p>Elevator: {{ property_detail.elevator }}
+
             <p>Rooms: {{ property_detail.rooms }}</p>
 
             <p>Heating: {{ property_detail.heating }}</p>
 
             <p>Total area: {{ property_detail.area }} sq.m </p>
+
+            <p>Parking lot: {{ property_detail.parking }}</p>
 
             {% if roperty_detail.address %}
 

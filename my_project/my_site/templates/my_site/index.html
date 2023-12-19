@@ -4,7 +4,9 @@
 
 <h2 class='page_heading'>LATEST OFFERS FOR SALE</h2>
 
-<div class="property_list">    
+<div class="property_list">
+
+    {% if for_sale %}
 
     {% for item in for_sale %}
 
@@ -54,11 +56,19 @@
 
     {% endfor %}
 
+    {% else %}
+
+    <h4>No property for sale yet</h4>
+
+    {% endif %}
+
 </div>
 
 <h2 class='page_heading'>LATEST OFFERS FOR RENT</h2>
 
-<div class="property_list">    
+<div class="property_list">
+
+    {% if for_rent %}
 
     {% for item in for_rent %}
 
@@ -96,7 +106,7 @@
 
                 <p>Rooms: {{ item.rooms }}</p>
 
-                <p style="color: black"><b>Price: {{ item.price }} TL</b></p>
+                <p style="color: black"><b>Price: {{ item.price }} TL/month</b></p>
 
                 
             
@@ -107,6 +117,12 @@
     </div></a>
 
     {% endfor %}
+
+    {% else %}
+
+    <h4>No property for rent yet</h4>
+
+    {% endif %}
 
 </div>
 
