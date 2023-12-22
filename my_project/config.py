@@ -1,16 +1,17 @@
 HEATING_CHOICES = (
-    ("NO", "No Heating"),
-    ("AC", "Air Conditioner heating"),
-    ("GAS", "Natural Gas heating"),
-    ("STOVE", "Fire Place heating"),
-    ("ELECTRIC", "Electric Boiler heating"),
+    ("No heating", "No Heating"),
+    ("Air Conditioner heating", "Air Conditioner heating"),
+    ("Natural Gas heating", "Natural Gas heating"),
+    ("Geothermal", "Geothermal"),
+    ("Fire Place heating", "Fire Place heating"),
+    ("Electric Boiler heating", "Electric Boiler heating"),
 )
 
 PARKING_TYPE = (
-    ("PARKING ON THE STREET", "STREET"),
-    ("PARKING ON SITE", "ON SITE"),
-    ("ROOFED PARKING ON SITE", "ROOFED ON SITE"),
-    ("UNDERGROUND PARKING", "UNDERGROUND"),
+    ("Parking on the street", "Parking on the street"),
+    ("Parking on site", "Parking on site"),
+    ("Roofed parking on site", "Roofed parking on site"),
+    ("Underground parking", "Underground parking"),
 )
 
 ELEVATOR = (
@@ -18,13 +19,39 @@ ELEVATOR = (
     ("No", "NO"),
 )
 
+ISKAN = (
+    ("Yes", "YES"),
+    ("No", "NO"),
+)
+
+EXPERTISE = (
+    ("Yes", "YES"),
+    ("No", "NO"),
+)
+
+RESIDENCE_PERMIT = (
+    ("Possible", "Possible"),
+    ("Not possible", "Not possible"),
+)
+
+FRONTAGE = (
+    ("North", "North"),
+    ("East", "East"),
+    ("South", "South"),
+    ("West", "West"),
+    ("North-East", "North-East"),
+    ("South-East", "South-East"),
+    ("South-West", "South-West"),
+    ("North-West", "North-West"),
+)
+
 PROPERTY_TYPES = (
-    ("APARTMENT", "Apartment"),
-    ("COMMERS", "Commercial unit"),
-    ("LAND", "Land"),
-    ("BUILDING", "Building"),
-    ("FARM HOUSE", "Farm house"),
-    ("UNDER CONSTRUCTION", "Under construction"),
+    ("Apartment", "Apartment"),
+    ("Commercial unit", "Commercial unit"),
+    ("Land", "Land"),
+    ("Building", "Building"),
+    ("Farm house", "Farm house"),
+    ("Under construction", "Under construction"),
 )
 
 DEAL_TYPES = (

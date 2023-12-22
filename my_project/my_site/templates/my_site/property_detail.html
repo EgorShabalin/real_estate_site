@@ -65,55 +65,267 @@
                     dots[i].className = dots[i].className.replace(" active", "");
                 }
                 slides[slideIndex-1].style.display = "block";
-                dots[slideIndex-1].className += " active";
+                
             }
         </script>
 
+        {% else %}
+
+        <h3>No image yet</h3>
+        
+        {% endif %}
+
     </div>
 
-    {% endif %}
+    
 
     <div class='description'>
 
-        <div class='descriptions_detail'>        
+        <div class='descriptions_detail'>
 
-            <p style="color: black"><b>Price: {{ property_detail.price }} TL</b></p>
+            <table class="description_table">
 
-            <p>Category: {{ property_detail.category }}</p>
-                        
-            <p>Province: {{ property_detail.province }}</p>
+                <tr>
+                    <td>
 
-            <p>District: {{ property_detail.district }}</p>
+                        <b>Price:</b>                        
 
-            <p>Floor: {{ property_detail.floor_number }} of {{ property_detail.total_floors }}</p>
+                    </td>
 
-            <p>Elevator: {{ property_detail.elevator }}
+                    <td>
 
-            <p>Rooms: {{ property_detail.rooms }}</p>
+                        <span class="price"><b>{{ property_detail.price }} TL</b></span>
 
-            <p>Heating: {{ property_detail.heating }}</p>
+                    </td>
+                
+                </tr>
 
-            <p>Total area: {{ property_detail.area }} sq.m </p>
+                <tr>
+                    <td>
 
-            <p>Parking lot: {{ property_detail.parking }}</p>
+                        <b>Category: </b>                        
 
-            {% if roperty_detail.address %}
+                    </td>
 
-                <p>Address: {{ property_detail.address }}</p>
+                    <td>
 
-            {% endif %}
+                        <span>{{ property_detail.category }}</span>
+
+                    </td>
+                
+                </tr>
+
+                {% if property_detail.address %}
+
+                <tr>
+                    <td>
+
+                        <b>Address:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.address }}</span>
+
+                    </td>
+                
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td>
+
+                        <b>Province:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.province }}</span>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <b>District:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.district }}</span>
+
+                    </td>
+                
+                </tr>
+
+                {% endif %}
+
+                <tr>
+                    <td>
+
+                        <b>Floor:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.floor_number }} of {{ property_detail.total_floors }}</span>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <b>Elevator:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.elevator }}</span>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <b>Rooms:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.rooms }}</span>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <b>Heating:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.heating }}</span>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <b>Total area:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.area }} sq.m</span>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <b>Parking lot:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.parking }}</span>
+
+                    </td>
+                
+                </tr>
+
+                {% if property_detail.iskan %}
+
+                <tr>
+                    <td>
+
+                        <b>Iskan/Yapi kulanma:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.iskan }}</span>
+
+                    </td>
+                
+                </tr>
+
+                {% endif %}
+
+                {% if property_detail.expertise %}
+
+                <tr>
+                    <td>
+
+                        <b>Expertise:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.expertise }}</span>
+
+                    </td>
+                
+                </tr>
+
+                {% endif %}
+
+                {% if property_detail.residence_permit %}
+
+                <tr>
+                    <td>
+
+                        <b>Foreigners residence permit:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ property_detail.residence_permit }}</span>
+
+                    </td>
+                
+                </tr>
+
+                {% endif %}
+
+            </table>
+
+        </div>
+
+        <div class='description_text'>
+
+            <p>{{ property_detail.description }}</p>
 
             <a class="button" href="#">BUY IT NOW</a>
 
             <br>
 
             <br>
-
-        </div>
-
-        <div class='description_text'>
-
-            <p>{{ property_detail.description }}</p>            
         
         </div>
 

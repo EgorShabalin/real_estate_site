@@ -74,7 +74,7 @@ a {
 }
 
 .img_small {
-    max-width: 300px;
+    max-width: 250px;
     float: left;
     margin: 0 1em 0 0;
     padding: 0;
@@ -84,6 +84,10 @@ a {
     width: fit-content;
     margin: 0 1em 1em 0;
     color: rgb(78, 78, 78);
+}
+
+.small_card_description_table td {
+    padding: 5px 0 5px 5px;
 }
 
 .button {
@@ -147,7 +151,7 @@ h3 {
 
 .detail_image {
     display: flex;
-    width: 1300px;
+    width: 900px;
     height: auto;
 }
 
@@ -163,26 +167,36 @@ h3 {
     margin: 20px 20px 0 0;
     padding-right: 20px;
     color: rgb(78, 78, 78);
-    border-style: dotted;
+    border-right-style: dotted;
     border-color: rgb(0, 82, 114);
     border-width: 1px;
-    border-left: 0;
-    border-bottom: 0;
-    border-top: 0;
 }
 
-.descriptions_detail p {
-    border-style: dotted;
+.description_table {
+    margin-bottom: 20px;
+}
+
+.description_table td {
+    border-bottom-style: dotted;
     border-color: rgb(0, 82, 114);
     border-width: 1px;
-    border-left: 0;
-    border-top: 0;
-    border-right: 0;
+    padding: 5px 0 5px 0;
 }
+
+.description_table td span {
+    padding-left: 20px;
+}
+
+.price {
+    color: darkgreen;
+    font-size: x-large;
+}
+
+
 
 .description_text {
     max-width: 50%;
-    padding-top: 20px;
+    margin-top: 20px;
 }
 
 .content {
@@ -247,6 +261,15 @@ footer a {
     font-size: 2em;
     margin: 0% 1%;
 }
+
+@media (max-width:529px) {
+    .description_text {
+        border-top-style: dotted;
+        border-color: rgb(0, 82, 114);
+        border-width: 1px;
+    }
+}
+
 
 @media (max-width:720px) {
 
@@ -367,7 +390,7 @@ footer a {
 /* Fading animation */
 .fade {
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: .7s;
 }
 
 @keyframes fade {

@@ -36,15 +36,74 @@
 
             {% endif %}
 
-            <div class='small_card_description'>            
+            <div class='small_card_description'>
+
+                <table class="small_card_description_table">
+
+                <tr>
+
+                    <td>
+
+                        <b>Province:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ item.province }}</span>
+
+                    </td>
                 
-                <p>Province: {{ item.province }}</p>
+                </tr>
 
-                <p>District: {{ item.district }}</p>
+                <tr>
+                    
+                    <td>
 
-                <p>Rooms: {{ item.rooms }}</p>
+                        <b>District:</b>                        
 
-                <p style="color: black"><b>Price: {{ item.price }} TL/month</b></p>
+                    </td>
+
+                    <td>
+
+                        <span>{{ item.district }}</span>
+
+                    </td>
+                
+                </tr>
+                
+                <tr>
+                    
+                    <td>
+
+                        <b>Rooms:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span>{{ item.rooms }}</span>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <b style="color: black">Price:</b>                        
+
+                    </td>
+
+                    <td>
+
+                        <span style="color: black"><b>{{ item.price }} TL/month</b></span>
+
+                    </td>
+                
+                </tr>
+
+                </table>
             
             </div>
         

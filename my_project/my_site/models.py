@@ -11,6 +11,10 @@ from config import (
     DEAL_TYPES,
     PARKING_TYPE,
     ELEVATOR,
+    FRONTAGE,
+    ISKAN,
+    EXPERTISE,
+    RESIDENCE_PERMIT,
 )
 
 
@@ -18,7 +22,7 @@ class Category(models.Model):
     name = models.CharField(
         max_length=25,
         choices=PROPERTY_TYPES,
-        default="APARTMENT",
+        default="Apartment",
         blank=False,
         null=False,
     )
@@ -34,7 +38,7 @@ class Heating(models.Model):
     type = models.CharField(
         max_length=25,
         choices=HEATING_CHOICES,
-        default="NO",
+        default="No heating",
         blank=False,
         null=False,
     )
@@ -50,7 +54,7 @@ class Parking(models.Model):
     type = models.CharField(
         max_length=25,
         choices=PARKING_TYPE,
-        default="PARKING ON THE STREET",
+        default="Parking on the street",
         blank=False,
         null=False,
     )
@@ -64,7 +68,7 @@ class Parking(models.Model):
 
 class Property(models.Model):
     title = models.CharField(max_length=250, verbose_name=_("title"))
-    price = models.DecimalField(max_digits=10, decimal_places=0)
+    price = models.CharField(max_length=10)
     province = models.CharField(
         max_length=50, choices=IL_LIST, default="Antalya", blank=False, null=False
     )
@@ -83,7 +87,29 @@ class Property(models.Model):
         Heating, on_delete=models.CASCADE, null=False, default=[1]
     )
     elevator = models.CharField(
-        max_length=50, choices=ELEVATOR, default="NO", blank=False, null=False
+        max_length=50, choices=ELEVATOR, default="No", blank=False, null=False
+    )
+    frontage = models.CharField(max_length=50, choices=FRONTAGE, blank=True, null=True)
+    iskan = models.CharField(
+        max_length=50,
+        choices=ISKAN,
+        default="Yes",
+        blank=True,
+        null=True,
+    )
+    expertise = models.CharField(
+        max_length=50,
+        choices=EXPERTISE,
+        default="Yes",
+        blank=True,
+        null=True,
+    )
+    residence_permit = models.CharField(
+        max_length=50,
+        choices=RESIDENCE_PERMIT,
+        default="Not possible",
+        blank=True,
+        null=True,
     )
     description = models.TextField()
     category = models.ForeignKey(
@@ -97,7 +123,15 @@ class Property(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title + " | " + str(self.created_at) + " | " + str(self.updated_at)
+        return (
+            self.title
+            + " | "
+            + "Created at: "
+            + str(self.created_at)
+            + " | "
+            + "Updated at: "
+            + str(self.updated_at)
+        )
 
     class Meta:
         ordering = ("-created_at",)
