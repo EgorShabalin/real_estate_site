@@ -1,5 +1,8 @@
 from django.db import models
+from django.conf import settings
 from django.utils.translation import gettext as _
+
+from custom_user.models import User
 
 from PIL import Image
 
@@ -119,6 +122,11 @@ class Property(models.Model):
         max_length=10, choices=DEAL_TYPES, blank=False, null=False, default="SALE"
     )
     active = models.BooleanField(default=True)
+    bookmark = models.ManyToManyField(
+        User,
+        related_name="bookmarks",
+        blank=True,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -42,28 +42,22 @@
             let slideIndex = 1;
             showSlides(slideIndex);
 
-            // Next/previous controls
             function plusSlides(n) {
             showSlides(slideIndex += n);
             }
-
-            // Thumbnail image controls
+            
             function currentSlide(n) {
                 showSlides(slideIndex = n);
             }
 
             function showSlides(n) {
                 let i;
-                let slides = document.getElementsByClassName("mySlides");
-                let dots = document.getElementsByClassName("dot");
+                let slides = document.getElementsByClassName("mySlides");                
                 if (n > slides.length) {slideIndex = 1}
                 if (n < 1) {slideIndex = slides.length}
                 for (i = 0; i < slides.length; i++) {
                     slides[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
+                }                
                 slides[slideIndex-1].style.display = "block";
                 
             }
@@ -299,7 +293,7 @@
                 <tr>
                     <td>
 
-                        <b>Foreigners residence permit:</b>                        
+                        <b>Residence permit:</b>
 
                     </td>
 
@@ -323,9 +317,17 @@
 
             <a class="button" href="#">BUY IT NOW</a>
 
-            <br>
+            {% if request.user.is_authenticated %}
 
-            <br>
+                <form action={% url 'my_site:bookmark' property_detail.pk %} method="POST">
+
+                    {% csrf_token %}
+
+                    <button class="button" id="bookmark" type='submit' name='property_detail_id' value="{{ property_detail.id }}">BOOKMARK{% if request.user in property_detail.bookmark.all %}ED{% endif %}</button>
+            
+                </form>
+
+            {% endif %}
         
         </div>
 

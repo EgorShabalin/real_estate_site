@@ -19,16 +19,90 @@
     </head>
 
     <body>
+            
+        <div class='header'>
 
-        <a href="{% url 'my_site:index' %}"><div class='header'>
+            <a href="{% url 'my_site:index' %}">
 
-            <h1 class='logo'>HAKAN ARSLAN EMLAK</h1>
+                <div class="logo">
 
-            <div></div>
+                    <img class="logo_img" src={% static 'my_site/logo_img_2.png' %}/>
 
-        </div></a>
+                    
+
+                </div>
+
+            </a>
+
+            <a href="{% url 'my_site:index' %}">
+
+                <h1 class='logo_text'>HAKAN ARSLAN EMLAK</h1>
+
+            </a>
+
+            <div class="login_signup_buttons" id="login_signup_buttons">
+
+                {% if request.user.is_authenticated %}
+
+                    <div class='login_signup_authenticated'>                        
+
+                        <a class='button' id="button" href="{% url 'my_site:profile' request.user.id %}">MY PROFILE</a>                    
+
+                        <a class='button' id="signup" href="{% url 'logout' %}">LOG OUT</a>
+
+                    </div>
+
+                    {% if user.first_name %}
+                        
+                        <p class="welcome_message">Welcome, {{ user.first_name }}!</p>
+
+                    {% else %}
+
+                        <p class="welcome_message">Welcome, {{ user.email }}!</p>
+                    
+                    {% endif %}
+
+                {% else %}
+
+                    <a class="button" id="signup" href="{% url 'my_site:signup' %}">Sign up</a>
+
+                    <a class="button" id="button" href="{% url 'my_site:user_login' %}">Log in</a>                    
+
+                {% endif %}
+
+            </div>                
+
+        </div>
 
         <div class='main_menu_container'>
+
+            <div class="imgContainer">
+
+                <img class='item item_show' src={% static 'my_site/image_1r.jpg' %} />
+
+                <img class='item' src={% static 'my_site/image_5r.jpg' %} />
+
+                <img class='item' src={% static 'my_site/image_11r.jpg' %} />
+
+                <img class='item' src={% static 'my_site/image_12r.jpg' %} />
+
+                <img class='item' src={% static 'my_site/image_13r.jpg' %} />
+
+            </div>
+
+            <script>
+
+                const elem = document.querySelectorAll('.imgContainer .item');
+                let currentIndex = 0;
+
+                setInterval(function() {
+                    elem.forEach(item => item.classList.remove('item_show'));
+                    elem[currentIndex].classList.add('item_show');
+
+                    currentIndex = (currentIndex + 1) % elem.length;
+                    }, 5000);
+                
+            </script>
        
             <div class='main_menu'>
 
@@ -36,19 +110,31 @@
 
                 <a class='button_menu' href="{% url 'my_site:property_for_rent_list_view' %}">FOR RENT</a>
 
-                <a class='button_menu' href='#'>OUR TEAM</a>
+                <a class='button_menu' href='#'>BLOG</a>
 
-                <a class='button_menu' href='#'>FAQ</a>
+                <a class='button_menu' href='#'>OUR TEAM</a>
                 
                 <a class='button_menu' href="{% url 'my_site:contacts' %}">CONTACTS</a>
 
-            </div>
+            </div>                            
         
         </div>
 
-        <div>
+        <div class='search_bar_container'>
 
+            <div class='search_bar_form_container'>
 
+                <form class='search_bar' method=POST action={% url 'my_site:search_result' %}>
+
+                    {% csrf_token %}
+
+                    <input placeholder='Search' name='searched'>
+
+                    <button class='search_button' id="search_button" type='submit'>SEARCH</button>
+
+                </form>
+            
+            </div>
 
         </div>
 
@@ -62,22 +148,23 @@
 
             <div class="footer">
                 <div class="row">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100043587060070"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/antalya.hakan.arslan.emlak/"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>                    
+                    <a href="https://t.me/+905376321145"><i class="fa fa-telegram"></i></a>
+                    <a href="https://wa.me/905376321145"><i class="fa fa-whatsapp"></i></a>
                 </div>
 
                 <div class="row">
                     <ul>
-                        <li><a href="#">Contact us</a></li>
+                        <li><a href="{% url 'my_site:contacts' %}">Contact us</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms & Conditions</a></li>                        
                     </ul>
                 </div>
 
                 <div class="row">
-                    HAKAN ARSLAN EMLAK Copyright © 2021 HAKAN ARSLAN EMLAK Copyright - All rights reserved || Created By: <a href="mailto:egor.shabalin.wd@gmail.com"><b>Egor Shabalin</b></a>
+                    <b>HAKAN ARSLAN EMLAK</b> Copyright © 2023 - All rights reserved || Created by: <a href="mailto:egor.shabalin.wd@gmail.com"><b>Egor Shabalin</b></a>
                 </div>
             </div>
         </footer>
