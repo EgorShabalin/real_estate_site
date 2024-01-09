@@ -1,0 +1,35 @@
+{% extends 'my_site/base.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+{% if profile %}
+
+<div class='content'>
+
+    <h2>My profile</h2>
+
+    <p>Email: {{ profile.email }}</p>
+
+    <p>First name: {{ profile.first_name }}</p>
+
+    <p>Last name: {{ profile.last_name }}</p>
+
+    <p>Bookmarks: {{ bookmarks.all }}</p>
+
+    <p>Registred: {{ profile.date_joined }}</p>
+
+    <p>Last log in: {{ profile.last_login }}</p>
+
+</div>
+
+{% else %}
+
+    fck
+
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

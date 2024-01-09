@@ -1,0 +1,138 @@
+{% extends 'my_site/base.html' %}
+
+{% block content %}
+
+<center>
+
+    {% if searched %}
+
+        <h2>You searched for "{{searched}}"</h2>
+
+        {% if searched_items %}
+
+            <div class="property_list">            
+
+                {% for item in searched_items %}
+
+                    <a style="text-decoration: none; color: black" href="{% url 'my_site:property_detail_view' item.id %}">
+
+                    <div class='property_list_item'>
+
+                        <h3>{{ item.title }}</h3>        
+
+                        <div class='photo_and_description'>
+
+                            {% if item.photos.first %}
+                        
+                            <div class='property_img_small'>
+                                
+                                <img class='img_small' src="{{ item.photos.first.photo.url }}" alt="img">
+                            
+                            </div>
+
+                            {% else %}
+
+                            <div class='property_img_small'>
+                                
+                                <img class='img_small' src="/static/my_site/no_image_yet.jpg" alt="img">
+                            
+                            </div>
+
+                            {% endif %}
+
+                            <div class='small_card_description'>
+
+                                <table class="small_card_description_table">
+
+                                <tr>
+
+                                    <td>
+
+                                        <b>Province:</b>                        
+
+                                    </td>
+
+                                    <td>
+
+                                        <span>{{ item.province }}</span>
+
+                                    </td>
+                                
+                                </tr>
+
+                                <tr>
+                                    
+                                    <td>
+
+                                        <b>District:</b>                        
+
+                                    </td>
+
+                                    <td>
+
+                                        <span>{{ item.district }}</span>
+
+                                    </td>
+                                
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td>
+
+                                        <b>Rooms:</b>                        
+
+                                    </td>
+
+                                    <td>
+
+                                        <span>{{ item.rooms }}</span>
+
+                                    </td>
+                                
+                                </tr>
+
+                                <tr>
+                                    <td>
+
+                                        <b style="color: black">Price:</b>                        
+
+                                    </td>
+
+                                    <td>
+
+                                        <span style="color: black"><b>{{ item.price }} TL{% if item.type_of_deal == "RENT" %}/month{% endif %}</b></span>
+
+                                    </td>
+                                
+                                </tr>
+
+                                </table>
+                            
+                            </div>
+                        
+                        </div>
+                    
+                    </div></a>
+
+                {% endfor %}
+
+            </div>
+        
+        {% else %}
+
+        <h2>but nothing found...</h2>
+
+        {% endif %}
+
+    {% else %}
+
+    <h2>You didn't enter a search request</h2>
+
+    {% endif %}
+
+    
+
+</center>
+
+{% endblock %}
