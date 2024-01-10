@@ -151,3 +151,7 @@ class Photo(models.Model):
         Property, on_delete=models.CASCADE, related_name="photos"
     )
     photo = models.ImageField(upload_to="photos/")
+
+
+class Profile(models.Model):
+    pass

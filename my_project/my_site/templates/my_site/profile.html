@@ -8,19 +8,98 @@
 
 <div class='content'>
 
-    <h2>My profile</h2>
+    <div class='login_signup'>
 
-    <p>Email: {{ profile.email }}</p>
+        <center>
 
-    <p>First name: {{ profile.first_name }}</p>
+            <h2>MY PROFILE</h2>
 
-    <p>Last name: {{ profile.last_name }}</p>
+            <table>
 
-    <p>Bookmarks: {{ bookmarks.all }}</p>
+                <tr>
+                    <td>
 
-    <p>Registred: {{ profile.date_joined }}</p>
+                        <p>Email: </p>
 
-    <p>Last log in: {{ profile.last_login }}</p>
+                    </td>
+
+                    <td>
+
+                        <p>{{ profile.email }}</p>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <p>First name: </p>
+
+                    </td>
+
+                    <td>
+
+                        <p>{{ profile.first_name }}</p>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <p>Last name: </p>
+
+                    </td>
+
+                    <td>
+
+                        <p>{{ profile.last_name }}</p>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <p>Phone number: </p>
+
+                    </td>
+
+                    <td>
+
+                        <p>+90 123 456 78 90</p>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <p>Bookmarks: </p>
+
+                    </td>
+
+                    <td>
+
+                        <p>{% if bookmarks %}You saved {{ bookmarks.all | length }} properties.<a class='button' href='#'>SHOW ALL</a>{% else %}You have no favorites yet.{% endif %}</p>
+
+                    </td>
+                
+                </tr>
+
+            </table>
+
+            <a class='button' href='#'>EDIT MY PROFILE</a>
+
+            <a class='button' href='#'>DELETE MY PROFILE</a>
+
+        </center>
+
+    </div>
 
 </div>
 

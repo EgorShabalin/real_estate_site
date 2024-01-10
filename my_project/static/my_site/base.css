@@ -301,7 +301,7 @@ h3 {
 .content {
     margin: 20px;
     padding: 5px 0 20px 0;
-    background-color: rgb(191, 237, 255);
+
 }
 
 .login_signup_buttons {
@@ -327,7 +327,8 @@ h3 {
     margin: 0 20px 20px 20px;
 }
 
-.login_signup input {
+.login_signup input,
+textarea {
     border-style: solid;
     border-color: rgb(0, 82, 114);
     border-radius: 6px;
