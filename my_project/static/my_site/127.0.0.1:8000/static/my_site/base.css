@@ -82,19 +82,15 @@ h1 {
 .search_bar_container {
     background-color: rgb(25, 103, 134);
     margin: 0 0 20px 0;
-
+    /* padding: 10px; */
+    /* height: 40px; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.search_bar_form_container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 5px 20px 5px 20px;
-}
+.search_bar_form_container {display: flex;flex-direction: row;margin: 10px 20px 5px 20px;}
 
 .search_bar_container input {
     border-style: none;
@@ -399,12 +395,6 @@ footer a {
 .footer .row a i {
     font-size: 2em;
     margin: 0% 1%;
-}
-
-@media (max-width:350px) {
-    .search_bar_form_container {
-        margin: 10px 20px 5px 20px;
-    }
 }
 
 @media (max-width:529px) {
