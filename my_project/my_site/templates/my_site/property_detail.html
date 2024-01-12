@@ -11,6 +11,32 @@
         <h4 id='grey_title' style="color:grey;">ID: {{ property_detail.id }}</h4>
         
         <h3>{{ property_detail.title }}</h3>
+
+        <button class="button" href="#">CONTACT NOW</button>
+
+        {% if request.user.is_authenticated %}
+
+        <form action={% url 'my_site:bookmark' property_detail.pk %} method="POST">
+
+            {% csrf_token %}
+
+            <button class="button" type='submit' name='property_detail_id' value="{{ property_detail.id }}">
+                
+                {% if request.user in property_detail.bookmark.all %}
+                
+                SAVED TO FAVORITES
+                
+                {% else %}
+                
+                ADD TO FAVORITES
+                
+                {% endif %}
+            
+            </button>
+    
+        </form>
+
+        {% endif %}
     
     </div>
 
@@ -69,271 +95,255 @@
         
         {% endif %}
 
-    </div>
-
-    
-
-    <div class='description'>
-
-        <div class='descriptions_detail'>
-
-            <table class="description_table">
-
-                <tr>
-                    <td>
-
-                        <b>Price:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span class="price"><b>{{ property_detail.price }} TL</b></span>
-
-                    </td>
-                
-                </tr>
-
-                <tr>
-                    <td>
-
-                        <b>Category: </b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.category }}</span>
-
-                    </td>
-                
-                </tr>
-
-                {% if property_detail.address %}
-
-                <tr>
-                    <td>
-
-                        <b>Address:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.address }}</span>
-
-                    </td>
-                
-                </tr>
-
-                {% else %}
-
-                <tr>
-                    <td>
-
-                        <b>Province:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.province }}</span>
-
-                    </td>
-                
-                </tr>
-
-                <tr>
-                    <td>
-
-                        <b>District:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.district }}</span>
-
-                    </td>
-                
-                </tr>
-
-                {% endif %}
-
-                <tr>
-                    <td>
-
-                        <b>Floor:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.floor_number }} of {{ property_detail.total_floors }}</span>
-
-                    </td>
-                
-                </tr>
-
-                <tr>
-                    <td>
-
-                        <b>Elevator:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.elevator }}</span>
-
-                    </td>
-                
-                </tr>
-
-                <tr>
-                    <td>
-
-                        <b>Rooms:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.rooms }}</span>
-
-                    </td>
-                
-                </tr>
-
-                <tr>
-                    <td>
-
-                        <b>Heating:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.heating }}</span>
-
-                    </td>
-                
-                </tr>
-
-                <tr>
-                    <td>
-
-                        <b>Total area:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.area }} sq.m</span>
-
-                    </td>
-                
-                </tr>
-
-                <tr>
-                    <td>
-
-                        <b>Parking lot:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.parking }}</span>
-
-                    </td>
-                
-                </tr>
-
-                {% if property_detail.iskan %}
-
-                <tr>
-                    <td>
-
-                        <b>Iskan/Yapi kulanma:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.iskan }}</span>
-
-                    </td>
-                
-                </tr>
-
-                {% endif %}
-
-                {% if property_detail.expertise %}
-
-                <tr>
-                    <td>
-
-                        <b>Expertise:</b>                        
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.expertise }}</span>
-
-                    </td>
-                
-                </tr>
-
-                {% endif %}
-
-                {% if property_detail.residence_permit %}
-
-                <tr>
-                    <td>
-
-                        <b>Residence permit:</b>
-
-                    </td>
-
-                    <td>
-
-                        <span>{{ property_detail.residence_permit }}</span>
-
-                    </td>
-                
-                </tr>
-
-                {% endif %}
-
-            </table>
-
-        </div>
-
-        <div class='description_text'>
-
-            <p>{{ property_detail.description }}</p>
-
-            <a class="button" href="#">BUY IT NOW</a>
-
-            {% if request.user.is_authenticated %}
-
-                <form action={% url 'my_site:bookmark' property_detail.pk %} method="POST">
-
-                    {% csrf_token %}
-
-                    <button class="button" id="bookmark" type='submit' name='property_detail_id' value="{{ property_detail.id }}">BOOKMARK{% if request.user in property_detail.bookmark.all %}ED{% endif %}</button>
-            
-                </form>
-
-            {% endif %}
         
-        </div>
+
+            <div class='descriptions_detail'>
+
+                <table class="description_table">
+
+                    <tr>
+                        <td>
+
+                            <b>Price:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span class="price"><b>{{ property_detail.price }} TL</b></span>
+
+                        </td>
+                    
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <b>Category: </b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.category }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    {% if property_detail.address %}
+
+                    <tr>
+                        <td>
+
+                            <b>Address:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.address }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+                        <td>
+
+                            <b>Province:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.province }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <b>District:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.district }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    {% endif %}
+
+                    <tr>
+                        <td>
+
+                            <b>Floor:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.floor_number }} of {{ property_detail.total_floors }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <b>Elevator:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.elevator }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <b>Rooms:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.rooms }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <b>Heating:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.heating }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <b>Total area:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.area }} sq.m</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <b>Parking lot:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.parking }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    {% if property_detail.iskan %}
+
+                    <tr>
+                        <td>
+
+                            <b>Iskan/Yapi kulanma:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.iskan }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    {% endif %}
+
+                    {% if property_detail.expertise %}
+
+                    <tr>
+                        <td>
+
+                            <b>Expertise:</b>                        
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.expertise }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    {% endif %}
+
+                    {% if property_detail.residence_permit %}
+
+                    <tr>
+                        <td>
+
+                            <b>Residence permit:</b>
+
+                        </td>
+
+                        <td>
+
+                            <span>{{ property_detail.residence_permit }}</span>
+
+                        </td>
+                    
+                    </tr>
+
+                    {% endif %}
+
+                </table>
+
+            </div>
+
+            <div class='description_text'>
+
+                <p>{{ property_detail.description }}</p>
+
+                
+            
+            </div>
+
+        
 
     </div>
-
-    
 
 </div>
 

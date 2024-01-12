@@ -8,7 +8,7 @@
 
 <div class='content'>
 
-    <div class='login_signup'>
+    <div class='profile_details'>
 
         <center>
 
@@ -79,15 +79,37 @@
                 <tr>
                     <td>
 
-                        <p>Bookmarks: </p>
+                        <p>Favorites: </p>
 
+                    </td>
+
+                    {% if bookmarks %}
+
+                    <td>
+
+                        <p>You saved {{ bookmarks.all | length }} items in favorites.</p>
+                    
                     </td>
 
                     <td>
 
-                        <p>{% if bookmarks %}You saved {{ bookmarks.all | length }} properties.<a class='button' href='#'>SHOW ALL</a>{% else %}You have no favorites yet.{% endif %}</p>
+                        <button class='button' href='#'>SHOW ALL</button>
+                    
+                    </td>
+                            
+                    {% else %}
+
+                    <td>
+                        
+                        <p>You have no favorites yet.</p>
 
                     </td>
+                        
+                    {% endif %}
+                        
+                        
+
+                    
                 
                 </tr>
 
