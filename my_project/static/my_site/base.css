@@ -123,6 +123,7 @@ h1 {
     transition: .3s;
     border-color: white;
     color: white;
+    cursor: pointer;
 }
 
 .page_heading {
@@ -189,6 +190,7 @@ h1 {
 .button:hover {
     transition: .3s;
     color: white;
+    cursor: pointer;
 }
 
 .button_menu {
