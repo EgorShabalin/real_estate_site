@@ -36,6 +36,10 @@
     
         </form>
 
+        {% else %}
+
+        <button class="button" href="{% url 'my_site:signup' %}">ADD TO FAVORITES</button>
+
         {% endif %}
     
     </div>

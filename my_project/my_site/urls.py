@@ -32,4 +32,5 @@ urlpatterns = [
     path("accounts/profile/<int:pk>/", profile, name="profile"),
     path("edit_profile/", edit_profile, name="edit_profile"),
     path("bookmark/<int:pk>", bookmark, name="bookmark"),
+    path("favorites/<int:pk>", favorites, name="favorites"),
 ]

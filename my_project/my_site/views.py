@@ -147,3 +147,19 @@ def bookmark(request, pk):
         property.bookmark.add(request.user)
 
     return HttpResponseRedirect(reverse("my_site:property_detail_view", args=[str(pk)]))
+
+
+@login_required
+def favorites(request, pk):
+    User = get_user_model()
+    profile = User.objects.get(id=pk)
+    bookmarks = Property.objects.filter(bookmark=profile)
+
+    return render(
+        request,
+        "my_site/favorites.html",
+        {
+            "profile": profile,
+            "bookmarks": bookmarks,
+        },
+    )
