@@ -133,7 +133,7 @@ def edit_profile(request):
         form = EditUserForm(request.POST or None, instance=current_user)
         if form.is_valid():
             form.save()
-            return redirect("/")
+            return redirect("my_site:user_login")
 
         return render(request, "my_site/edit_profile.html", {"form": form})
 
