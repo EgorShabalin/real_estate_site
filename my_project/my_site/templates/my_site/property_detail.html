@@ -12,33 +12,33 @@
         
         <h3>{{ property_detail.title }}</h3>
 
-        <button class="button" href="#">CONTACT NOW</button>
+        <form action={% url 'my_site:contacts' %} target="_blank">
+
+            <button class="button" type='submit' style='display: block;' >CONTACT NOW</button>
+
+        </form>
 
         {% if request.user.is_authenticated %}
 
-        <form action={% url 'my_site:bookmark' property_detail.pk %} method="POST">
+            <form action={% url 'my_site:bookmark' property_detail.pk %} method="POST">
 
-            {% csrf_token %}
+                {% csrf_token %}
 
-            <button class="button" type='submit' name='property_detail_id' value="{{ property_detail.id }}">
+                <button class="button" style='display: block;' type='submit' name='property_detail_id' value="{{ property_detail.id }}">
+                    
+                    {% if request.user in property_detail.bookmark.all %}
+                    
+                        SAVED TO FAVORITES
+                    
+                    {% else %}
+                    
+                        ADD TO FAVORITES
+                    
+                    {% endif %}
                 
-                {% if request.user in property_detail.bookmark.all %}
-                
-                SAVED TO FAVORITES
-                
-                {% else %}
-                
-                ADD TO FAVORITES
-                
-                {% endif %}
-            
-            </button>
-    
-        </form>
-
-        {% else %}
-
-        <button class="button" href="{% url 'my_site:signup' %}">ADD TO FAVORITES</button>
+                </button>
+        
+            </form>
 
         {% endif %}
     
