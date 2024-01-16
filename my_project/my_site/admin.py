@@ -19,3 +19,17 @@ class PropertyAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Property, PropertyAdmin)
+
+
+class BlogPhotoAdmin(admin.TabularInline):
+    model = BlogPhoto
+
+
+class BlogAdmin(admin.ModelAdmin):
+    inlines = [BlogPhotoAdmin]
+
+    class Meta:
+        model = Blog
+
+
+admin.site.register(Blog, BlogAdmin)

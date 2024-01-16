@@ -238,3 +238,28 @@ class Profile(models.Model):
 
     def __str__(self) -> str:
         return self.current_user.username
+
+
+class Blog(models.Model):
+    title = models.CharField(
+        max_length=255,
+    )
+    text = models.TextField()
+    active = models.BooleanField(
+        default=True,
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
+
+
+class BlogPhoto(models.Model):
+    blog = models.ForeignKey(
+        Blog,
+        on_delete=models.CASCADE,
+        related_name="blog_images",
+    )
+    image = models.ImageField(upload_to="blog_images/")
