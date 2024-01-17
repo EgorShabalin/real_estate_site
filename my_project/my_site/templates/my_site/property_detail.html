@@ -114,7 +114,13 @@
 
                         <td>
 
+                            {% if property_detail.type_of_deal == 'SALE' %}
                             <span class="price"><b>{{ property_detail.price }} TL</b></span>
+                            {% else %}
+                            <span class="price"><b>{{ property_detail.price }} TL/month</b></span>
+                            {% endif %}
+
+
 
                         </td>
                     

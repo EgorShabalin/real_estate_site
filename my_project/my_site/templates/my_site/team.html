@@ -1,0 +1,55 @@
+{% extends 'my_site/base.html' %}
+
+{% block content %}
+
+<div class='content'>
+
+    <div class='team'>
+
+        <center>
+
+        {% if team %}
+
+        {% for mate in team %}
+
+            <div class='team_mate_container'>
+
+                <div class='mate_ava_container'>
+
+                    {% if mate.ava %}
+                        
+                        <img class='mate_ava' src="{{ mate.ava.url }}" alt="ava">
+                    
+                    {% else %}
+
+                        <img class='mate_ava' src="/static/my_site/ava1.jpg" alt="ava">
+                    
+                    {% endif %}
+
+                </div>
+
+                <div class='mate_description_container'>
+
+                    <h3>{{ mate.name }}</h3>
+
+                    <p>{% if mate.email %}{{ mate.email }}{% endif %}</p>
+                    
+                    <p>{% if mate.phone %}{{ mate.phone }}{% endif %}</p>
+
+                    <p>{% if mate.bio %}{{ mate.bio }}{% endif %}</p>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+        </center>
+
+    </div>
+
+</div>
+
+{% endblock %}

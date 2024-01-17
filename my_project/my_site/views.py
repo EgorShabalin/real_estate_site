@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from my_site.models import Property, Photo, Blog, BlogPhoto
+from my_site.models import Property, Photo, Blog, Team
 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -169,3 +169,9 @@ def blog(request):
     blog_list = Blog.objects.filter(active=True)
 
     return render(request, "my_site/blog.html", {"blog_list": blog_list})
+
+
+def team(request):
+    team = Team.objects.filter(active=True)
+
+    return render(request, "my_site/team.html", {"team": team})

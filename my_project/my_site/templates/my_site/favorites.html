@@ -99,7 +99,11 @@
 
                     <td>
 
+                        {% if item.type_of_deal == 'SALE' %}
                         <span style="color: black"><b>{{ item.price }} TL</b></span>
+                        {% else %}
+                        <span style="color: black"><b>{{ item.price }} TL/month</b></span>
+                        {% endif %}
 
                     </td>
                 

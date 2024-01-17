@@ -227,13 +227,9 @@ class Profile(models.Model):
         null=True,
     )
     phone = models.CharField(
-        max_length=15,
-    )
-    follows = models.ManyToManyField(
-        "self",
-        related_name="followed_by",
-        symmetrical=False,
+        max_length=20,
         blank=True,
+        null=True,
     )
 
     def __str__(self) -> str:
@@ -263,3 +259,32 @@ class BlogPhoto(models.Model):
         related_name="blog_images",
     )
     image = models.ImageField(upload_to="blog_images/")
+
+
+class Team(models.Model):
+    name = models.CharField(
+        max_length=255,
+    )
+    ava = models.ImageField(
+        default=None,
+        upload_to="teammates",
+        blank=True,
+        null=True,
+    )
+    phone = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+    )
+    email = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    bio = models.TextField(
+        blank=True,
+        null=True,
+    )
+    active = models.BooleanField(
+        default=True,
+    )
