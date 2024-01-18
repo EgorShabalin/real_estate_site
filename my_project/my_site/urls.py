@@ -20,6 +20,7 @@ urlpatterns = [
         name="property_for_rent_list_view",
     ),
     path("contacts/", contacts, name="contacts"),
+    path("thank_you/", thank_you, name="thank_you"),
     path("search-result/", search_result, name="search_result"),
     path("signup/", signup, name="signup"),
     path(

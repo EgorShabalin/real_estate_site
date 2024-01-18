@@ -1,3 +1,5 @@
+import os, dotenv
+
 from django.shortcuts import render, get_object_or_404
 
 from my_site.models import Property, Photo, Blog, Team
@@ -85,9 +87,20 @@ def search_result(request):
 
 
 def contacts(request):
+    secret = os.environ["W3F_SECRET"]
     return render(
         request,
         "my_site/contacts.html",
+        {
+            "secret": secret,
+        },
+    )
+
+
+def thank_you(request):
+    return render(
+        request,
+        "my_site/thank_you.html",
         {},
     )
 

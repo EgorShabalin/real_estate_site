@@ -10,9 +10,13 @@
             
             <h2 id='contacts' class='page_heading'>FEEL FREE TO CONTACT US!</h2>
 
-            <form action="https://formcarry.com/s/3NUmojan1a" method="POST" enctype="multipart/form-data">
+            <form id='contact_form' action="https://formcarry.com/s/3NUmojan1a" target="_blank" method="POST" enctype="multipart/form-data">
 
-            <table>
+                {% csrf_token %}
+
+                <input type="hidden" name="access_key" value={{ secret }}>                
+
+                <table>
 
                     <tr>
                         <td>                      
@@ -38,7 +42,7 @@
 
                         <td>
 
-                            <input required type="email" name="email" id="fc-generated-1-email" placeholder="john@doe.com" />
+                            <input required type="email" name="email" id="fc-generated-1-email" placeholder="name@example.com" />
 
                         </td>
                     
@@ -76,7 +80,18 @@
                 
                 </table>
 
-                <button class='button' style='margin-left:20px;' type="submit">SEND</button>
+                <button class='button' style='margin-left:20px;' type="submit" onclick="doRedirect();">SEND</button>
+
+                <script type="text/javascript">
+                    function doRedirect() {
+                        form=document.getElementById('contact_form');
+                        form.target='_blank';
+                        form.action='https://formcarry.com/s/3NUmojan1a';
+                        form.submit();
+                        form.action="{% url 'my_site:thank_you' %}";
+                        form.target='';
+                    }
+                </script>
 
             </form>
 
@@ -89,6 +104,8 @@
             <div class='address_container'>
 
                 <h3>Kütükçü mh. 2975 Sk. No:16/A Kepez/ANTALYA</h3>
+
+                <h3>+90 537 632 11 45</h3>
 
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3189.4518839631437!2d30.68808257650077!3d36.92736757221113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c38fd0fb91d637%3A0x7a6cb344f5d9164d!2sHAKAN%20ARSLAN%20EMLAK!5e0!3m2!1sen!2str!4v1705508025752!5m2!1sen!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             
