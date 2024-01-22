@@ -1,8 +1,10 @@
 {% extends 'my_site/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
-<h2 class='page_heading'>ALL PROPERTIES FOR SALE</h2>
+<h2 class='page_heading'>{% trans 'ALL PROPERTIES FOR SALE' %}</h2>
 
 <div class="property_list">
 
@@ -44,7 +46,7 @@
 
                     <td>
 
-                        <b>Province:</b>                        
+                        <b>{% trans 'Province' %}:</b>                        
 
                     </td>
 
@@ -60,7 +62,7 @@
                     
                     <td>
 
-                        <b>District:</b>                        
+                        <b>{% trans 'District' %}:</b>                        
 
                     </td>
 
@@ -76,7 +78,7 @@
                     
                     <td>
 
-                        <b>Rooms:</b>                        
+                        <b>{% trans 'Rooms' %}:</b>                        
 
                     </td>
 
@@ -91,7 +93,7 @@
                 <tr>
                     <td>
 
-                        <b style="color: black">Price:</b>                        
+                        <b style="color: black">{% trans 'Price' %}:</b>                        
 
                     </td>
 
@@ -115,7 +117,7 @@
 
     {% else %}
 
-    <h3>NO OFFERS FOR SALE YET</h3>
+    <h3>{% trans 'NO OFFERS FOR SALE YET' %}</h3>
 
     {% endif %}
 

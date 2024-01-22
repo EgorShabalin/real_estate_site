@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from custom_user.models import User
 
@@ -72,12 +72,14 @@ class Parking(models.Model):
 class Property(models.Model):
     title = models.CharField(
         max_length=250,
-        verbose_name=_("title"),
+        verbose_name="title",
     )
     price = models.CharField(
+        "price",
         max_length=10,
     )
     province = models.CharField(
+        "province",
         max_length=50,
         choices=IL_LIST,
         default="Antalya",
@@ -85,22 +87,26 @@ class Property(models.Model):
         null=False,
     )
     district = models.CharField(
+        "district",
         max_length=50,
         choices=ANTALYA_DIST_LIST,
         blank=True,
         null=True,
     )
     address = models.CharField(
+        "address",
         max_length=250,
         blank=True,
         null=True,
     )
     floor_number = models.DecimalField(
+        "floor_number",
         max_digits=2,
         decimal_places=0,
         default=0,
     )
     total_floors = models.DecimalField(
+        "total_floors",
         max_digits=2,
         decimal_places=0,
         default=0,
@@ -110,11 +116,14 @@ class Property(models.Model):
         on_delete=models.CASCADE,
         null=False,
         default=[1],
+        verbose_name="parking",
     )
     rooms = models.CharField(
+        "rooms",
         max_length=200,
     )
     area = models.CharField(
+        "area",
         max_length=200,
     )
     heating = models.ForeignKey(
@@ -122,8 +131,10 @@ class Property(models.Model):
         on_delete=models.CASCADE,
         null=False,
         default=[1],
+        verbose_name="heating",
     )
     elevator = models.CharField(
+        "elevator",
         max_length=50,
         choices=ELEVATOR,
         default="No",
@@ -131,6 +142,7 @@ class Property(models.Model):
         null=False,
     )
     frontage = models.CharField(
+        "frontage",
         max_length=50,
         choices=FRONTAGE,
         blank=True,
@@ -144,6 +156,7 @@ class Property(models.Model):
         null=True,
     )
     expertise = models.CharField(
+        "expertise",
         max_length=50,
         choices=EXPERTISE,
         default="Yes",
@@ -151,20 +164,25 @@ class Property(models.Model):
         null=True,
     )
     residence_permit = models.CharField(
+        "residence_permit",
         max_length=50,
         choices=RESIDENCE_PERMIT,
         default="Not possible",
         blank=True,
         null=True,
     )
-    description = models.TextField()
+    description = models.TextField(
+        "description",
+    )
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
         null=False,
         default=[1],
+        verbose_name="category",
     )
     type_of_deal = models.CharField(
+        "type_of_deal",
         max_length=10,
         choices=DEAL_TYPES,
         blank=False,
@@ -172,17 +190,21 @@ class Property(models.Model):
         default="SALE",
     )
     active = models.BooleanField(
+        "active",
         default=True,
     )
     bookmark = models.ManyToManyField(
         User,
         related_name="bookmarks",
         blank=True,
+        verbose_name="bookmark",
     )
     created_at = models.DateTimeField(
+        "created_at",
         auto_now_add=True,
     )
     updated_at = models.DateTimeField(
+        "updated_at",
         auto_now=True,
     )
 

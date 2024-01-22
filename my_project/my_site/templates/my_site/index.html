@@ -1,8 +1,10 @@
 {% extends 'my_site/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
-<h2 class='page_heading'>LATEST OFFERS FOR SALE</h2>
+<h2 class='page_heading'>{% trans 'LATEST OFFERS FOR SALE' %}</h2>
 
 <div class="property_list">
 
@@ -44,7 +46,7 @@
 
                     <td>
 
-                        <b>Province:</b>                        
+                        <b>{% trans 'Province' %}:</b>                        
 
                     </td>
 
@@ -60,7 +62,7 @@
                     
                     <td>
 
-                        <b>District:</b>                        
+                        <b>{% trans 'District' %}:</b>                        
 
                     </td>
 
@@ -76,7 +78,7 @@
                     
                     <td>
 
-                        <b>Rooms:</b>                        
+                        <b>{% trans 'Rooms' %}:</b>                        
 
                     </td>
 
@@ -91,7 +93,7 @@
                 <tr>
                     <td>
 
-                        <b style="color: black">Price:</b>                        
+                        <b style="color: black">{% trans 'Price' %}:</b>                        
 
                     </td>
 
@@ -115,13 +117,13 @@
 
     {% else %}
 
-    <h4>No property for sale yet</h4>
+    <h4>{% trans 'No property for sale yet' %}</h4>
 
     {% endif %}
 
 </div>
 
-<h2 class='page_heading'>LATEST OFFERS FOR RENT</h2>
+<h2 class='page_heading'>{% trans 'LATEST OFFERS FOR RENT' %}</h2>
 
 <div class="property_list">
 
@@ -163,7 +165,7 @@
 
                     <td>
 
-                        <b>Province:</b>                        
+                        <b>{% trans 'Province' %}:</b>                        
 
                     </td>
 
@@ -179,7 +181,7 @@
                     
                     <td>
 
-                        <b>District:</b>                        
+                        <b>{% trans 'District' %}:</b>                        
 
                     </td>
 
@@ -195,7 +197,7 @@
                     
                     <td>
 
-                        <b>Rooms:</b>                        
+                        <b>{% trans 'Rooms' %}:</b>                        
 
                     </td>
 
@@ -210,7 +212,7 @@
                 <tr>
                     <td>
 
-                        <b style="color: black">Price:</b>                        
+                        <b style="color: black">{% trans 'Price' %}:</b>                        
 
                     </td>
 
@@ -234,7 +236,7 @@
 
     {% else %}
 
-    <h4>No property for rent yet</h4>
+    <h4>{% trans 'No property for rent yet' %}</h4>
 
     {% endif %}
 

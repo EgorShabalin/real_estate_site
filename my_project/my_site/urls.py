@@ -2,6 +2,7 @@ from django.urls import path
 from my_site.views import *
 from django.contrib.auth import views as auth_views
 from .forms import LoginForm
+from django.views.i18n import set_language
 
 
 app_name = "my_site"
@@ -36,4 +37,5 @@ urlpatterns = [
     path("favorites/<int:pk>", favorites, name="favorites"),
     path("blog/", blog, name="blog"),
     path("team/", team, name="team"),
+    path("set-language/", set_language, name="set_language"),
 ]

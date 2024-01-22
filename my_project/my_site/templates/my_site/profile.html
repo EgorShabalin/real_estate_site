@@ -1,5 +1,7 @@
 {% extends 'my_site/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
 {% if request.user.is_authenticated %}
@@ -12,7 +14,7 @@
 
         <center>
 
-            <h2>MY PROFILE</h2>
+            <h2>{% trans 'MY PROFILE' %}</h2>
 
             <table>
 
@@ -34,7 +36,7 @@
                 <tr>
                     <td>
 
-                        <p>First name: </p>
+                        <p>{% trans 'First name' %}: </p>
 
                     </td>
 
@@ -49,7 +51,7 @@
                 <tr>
                     <td>
 
-                        <p>Last name: </p>
+                        <p>{% trans 'Last name' %}: </p>
 
                     </td>
 
@@ -64,7 +66,7 @@
                 <tr>
                     <td>
 
-                        <p>Phone number: </p>
+                        <p>{% trans 'Phone number' %}: </p>
 
                     </td>
 
@@ -79,7 +81,7 @@
                 <tr>
                     <td>
 
-                        <p>Favorites: </p>
+                        <p>{% trans 'Favorites' %}: </p>
 
                     </td>
 
@@ -87,13 +89,13 @@
 
                     <td>
 
-                        <p>You saved {{ bookmarks.all | length }} items in favorites.</p>
+                        <p>{% trans 'You saved' %} {{ bookmarks.all | length }} {% trans 'items in favorites' %}.</p>
                     
                     </td>
 
                     <td>
 
-                        <a class='button' style='display:block;' href={% url 'my_site:favorites' request.user.id %}>SHOW ALL</a>
+                        <a class='button' style='display:block;' href={% url 'my_site:favorites' request.user.id %}>{% trans 'SHOW ALL' %}</a>
                     
                     </td>
                             
@@ -101,7 +103,7 @@
 
                     <td>
                         
-                        <p>You have no favorites yet.</p>
+                        <p>{% trans 'You have no favorites yet' %}.</p>
 
                     </td>
                         
@@ -115,17 +117,13 @@
 
             </table>
 
-            <a class='button' href={% url 'my_site:edit_profile' %}>EDIT MY PROFILE</a>
+            <a class='button' href={% url 'my_site:edit_profile' %}>{% trans 'EDIT MY PROFILE' %}</a>
 
         </center>
 
     </div>
 
 </div>
-
-{% else %}
-
-    fck
 
 {% endif %}
 

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 
 <!DOCTYPE HTML>
 
@@ -46,27 +46,27 @@
 
                     <div class='login_signup_authenticated'>                        
 
-                        <a class='button' id="button" href="{% url 'my_site:profile' request.user.id %}">MY PROFILE</a>                    
+                        <a class='button' id="button" href="{% url 'my_site:profile' request.user.id %}">{% trans 'MY PROFILE' %}</a>                    
 
-                        <a class='button' id="signup" href="{% url 'logout' %}">LOG OUT</a>
+                        <a class='button' id="signup" href="{% url 'logout' %}">{% trans 'LOG OUT' %}</a>
 
                     </div>
 
                     {% if user.first_name %}
                         
-                        <p class="welcome_message">Welcome, {{ user.first_name }}!</p>
+                        <p class="welcome_message">{% trans 'Welcome,' %} {{ user.first_name }}!</p>
 
                     {% else %}
 
-                        <p class="welcome_message">Welcome, {{ user.email }}!</p>
+                        <p class="welcome_message">{% trans 'Welcome,' %} {{ user.email }}!</p>
                     
                     {% endif %}
 
                 {% else %}
 
-                    <a class="button" id="signup" href="{% url 'my_site:signup' %}">Sign up</a>
+                    <a class="button" id="signup" href="{% url 'my_site:signup' %}">{% trans 'Sign up' %}</a>
 
-                    <a class="button" id="button" href="{% url 'my_site:user_login' %}">Log in</a>                    
+                    <a class="button" id="button" href="{% url 'my_site:user_login' %}">{% trans 'Log in' %}</a>                    
 
                 {% endif %}
 
@@ -106,15 +106,15 @@
        
             <div class='main_menu'>
 
-                <a class='button_menu' href="{% url 'my_site:property_for_sale_list_view' %}">FOR SALE</a>
+                <a class='button_menu' href="{% url 'my_site:property_for_sale_list_view' %}">{% trans 'FOR SALE' %}</a>
 
-                <a class='button_menu' href="{% url 'my_site:property_for_rent_list_view' %}">FOR RENT</a>
+                <a class='button_menu' href="{% url 'my_site:property_for_rent_list_view' %}">{% trans 'FOR RENT' %}</a>
 
-                <a class='button_menu' href="{% url 'my_site:blog' %}">BLOG</a>
+                <a class='button_menu' href="{% url 'my_site:blog' %}">{% trans 'BLOG' %}</a>
 
-                <a class='button_menu' href="{% url 'my_site:team' %}">OUR TEAM</a>
+                <a class='button_menu' href="{% url 'my_site:team' %}">{% trans 'OUR TEAM' %}</a>
                 
-                <a class='button_menu' href="{% url 'my_site:contacts' %}">CONTACTS</a>
+                <a class='button_menu' href="{% url 'my_site:contacts' %}">{% trans 'CONTACTS' %}</a>
 
             </div>                            
         
@@ -128,17 +128,45 @@
 
                     {% csrf_token %}
 
-                    <input placeholder='Search' name='searched'>
+                    <input placeholder={% trans 'Search' %} name='searched'>
 
-                    <button class='search_button' id="search_button" type='submit'>SEARCH</button>
+                    <button class='search_button' id="search_button" type='submit'>{% trans 'SEARCH' %}</button>
 
                 </form>
             
             </div>
 
             <div class='search_bar_form_container'>
-            
-                <button class='button' href='#'>TR/EN/RU</button>
+
+                <form action="{% url 'set_language' %}" method="post">
+
+                    {% csrf_token %}
+
+                    <input type="hidden" name="next" value="{{ request.path }}">
+
+                    {% get_current_language as current_language %}
+
+                    {% get_available_languages as available_languages %}
+
+                    <button class='button' style="padding: 10px; min-width: fit-content;" type="submit" name="language" value="{% if current_language == 'tr' %}en{% elif current_language == 'en' %}ru{% elif current_language == 'ru' %}tr{% endif %}">
+
+                        {% if current_language == 'tr' %}
+
+                        🇹🇷
+
+                        {% elif current_language == 'en' %}
+
+                        🇺🇸
+
+                        {% elif current_language == 'ru' %}
+
+                        🇷🇺
+
+                        {% endif %}
+                        
+                    </button>
+                    
+                </form>
             
             </div>
 
@@ -163,9 +191,9 @@
 
                 <div class="row">
                     <ul>
-                        <li><a href="{% url 'my_site:contacts' %}">Contact us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>                        
+                        <li><a href="{% url 'my_site:contacts' %}">{% trans 'Contact us' %}</a></li>
+                        <li><a href="#">{% trans 'Privacy Policy' %}</a></li>
+                        <li><a href="#">{% trans 'Terms & Conditions' %}</a></li>
                     </ul>
                 </div>
 

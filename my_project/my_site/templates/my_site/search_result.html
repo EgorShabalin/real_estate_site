@@ -1,12 +1,14 @@
 {% extends 'my_site/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
 <center>
 
     {% if searched %}
 
-        <h2>You searched for "{{searched}}"</h2>
+        <h2>{% trans 'You searched for' %} "{{searched}}"</h2>
 
         {% if searched_items %}
 
@@ -48,7 +50,7 @@
 
                                     <td>
 
-                                        <b>Province:</b>                        
+                                        <b>{% trans 'Province' %}:</b>                        
 
                                     </td>
 
@@ -64,7 +66,7 @@
                                     
                                     <td>
 
-                                        <b>District:</b>                        
+                                        <b>{% trans 'District' %}:</b>                        
 
                                     </td>
 
@@ -80,7 +82,7 @@
                                     
                                     <td>
 
-                                        <b>Rooms:</b>                        
+                                        <b>{% trans 'Rooms' %}:</b>                        
 
                                     </td>
 
@@ -95,7 +97,7 @@
                                 <tr>
                                     <td>
 
-                                        <b style="color: black">Price:</b>                        
+                                        <b style="color: black">{% trans 'Price' %}:</b>                        
 
                                     </td>
 
@@ -121,13 +123,13 @@
         
         {% else %}
 
-        <h2>but nothing found...</h2>
+        <h2>{% trans 'but nothing found' %}...</h2>
 
         {% endif %}
 
     {% else %}
 
-    <h2>You didn't enter a search request</h2>
+    <h2>{% trans "You didn't enter a search request" %}</h2>
 
     {% endif %}
 

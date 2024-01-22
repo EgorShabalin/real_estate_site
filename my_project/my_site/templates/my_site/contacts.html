@@ -1,5 +1,7 @@
 {% extends 'my_site/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
 <div class="login_signup">
@@ -8,7 +10,7 @@
 
         <div class='contact'>
             
-            <h2 id='contacts' class='page_heading'>FEEL FREE TO CONTACT US!</h2>
+            <h2 id='contacts' class='page_heading'>{% trans 'FEEL FREE TO CONTACT US!' %}</h2>
 
             <form id='contact_form' action="https://formcarry.com/s/3NUmojan1a" target="_blank" method="POST" enctype="multipart/form-data">
 
@@ -21,13 +23,13 @@
                     <tr>
                         <td>                      
 
-                            <label for="fc-generated-1-name">Your Full Name: </label>
+                            <label for="fc-generated-1-name">{% trans 'Your Full Name' %}: </label>
 
                         </td>
 
                         <td>
 
-                            <input required type="text" name="name" id="fc-generated-1-name" placeholder="Your first and last name" />
+                            <input required type="text" name="name" id="fc-generated-1-name" placeholder={% trans 'Your first and last name' %} />
 
                         </td>
                     
@@ -36,7 +38,7 @@
                     <tr>
                         <td>
 
-                            <label for="fc-generated-1-email">Your Email Address: </label>
+                            <label for="fc-generated-1-email">{% trans 'Your Email Address' %}: </label>
 
                         </td>
 
@@ -51,7 +53,7 @@
                     <tr>
                         <td>
 
-                            <label for="fc-generated-1-phone">Your Phone Number: </label>
+                            <label for="fc-generated-1-phone">{% trans 'Your Phone Number' %}: </label>
 
                         </td>
 
@@ -66,13 +68,13 @@
                     <tr>
                         <td>
 
-                            <label for="fc-generated-1-message">Your Message: </label>
+                            <label for="fc-generated-1-message">{% trans 'Your Message' %}: </label>
 
                         </td>
 
                         <td>
 
-                            <textarea required name="message" name="message" id="fc-generated-1-message" placeholder="Enter your message starting from the ID number of the property..."></textarea>
+                            <textarea required name="message" name="message" id="fc-generated-1-message" placeholder={% trans 'Enter your message starting from the ID number of the property...' %}></textarea>
 
                         </td>
                     
@@ -80,7 +82,7 @@
                 
                 </table>
 
-                <button class='button' style='margin-left:20px;' type="submit" onclick="doRedirect();">SEND</button>
+                <button class='button' style='margin-left:20px;' type="submit" onclick="doRedirect();">{% trans 'SEND' %}</button>
 
                 <script type="text/javascript">
                     function doRedirect() {
@@ -99,7 +101,7 @@
 
         <div class='address'>
 
-            <h2 class='page_heading'>OUR ADDRESS</h2>            
+            <h2 class='page_heading'>{% trans 'OUR ADDRESS' %}</h2>            
 
             <div class='address_container'>
 

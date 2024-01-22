@@ -1,5 +1,7 @@
 {% extends 'my_site/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
 <div class="login_signup">
@@ -18,10 +20,10 @@
 
                 <ul>
 
-                    <li>Your password can’t be too similar to your other personal information.</li>
-                    <li>Your password must contain at least 8 characters.</li>
-                    <li>Your password can’t be a commonly used password.</li>
-                    <li>Your password can’t be entirely numeric.</li>
+                    <li>{% trans "Your password can’t be too similar to your other personal information" %}.</li>
+                    <li>{% trans "Your password must contain at least 8 characters" %}.</li>
+                    <li>{% trans "Your password can’t be a commonly used password" %}.</li>
+                    <li>{% trans "Your password can’t be entirely numeric" %}.</li>
 
                 </ul>
 
@@ -47,7 +49,7 @@
                 <tr>
                     <td>
 
-                        <label for="id_password1">Password:</label>
+                        <label for="id_password1">{% trans "Password" %}:</label>
 
                     </td>
 
@@ -62,7 +64,7 @@
                 <tr>
                     <td>
 
-                        <label for="id_password2">Repeat Password:</label>
+                        <label for="id_password2">{% trans "Repeat Password" %}:</label>
 
                     </td>
 
@@ -90,7 +92,7 @@
 
             </table>
             
-            <button id='button' class="button">SUBMIT</button>
+            <button id='button' class="button">{% trans "SUBMIT" %}</button>
         
         </form>
 
