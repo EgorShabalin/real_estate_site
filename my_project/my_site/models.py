@@ -233,31 +233,6 @@ class Photo(models.Model):
     photo = models.ImageField(upload_to="photos/")
 
 
-class Profile(models.Model):
-    current_user = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE,
-    )
-    ava = models.ImageField(
-        default=None,
-        upload_to="avatars",
-        blank=True,
-        null=True,
-    )
-    bio = models.TextField(
-        blank=True,
-        null=True,
-    )
-    phone = models.CharField(
-        max_length=20,
-        blank=True,
-        null=True,
-    )
-
-    def __str__(self) -> str:
-        return self.current_user.username
-
-
 class Blog(models.Model):
     title = models.CharField(
         max_length=255,

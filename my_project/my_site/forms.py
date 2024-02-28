@@ -6,10 +6,17 @@ from django.contrib.auth import get_user_model
 class SignupForm(UserCreationForm):
     class Meta:
         model = get_user_model()
-        fields = ("email", "password1", "password2")
+        fields = ("email", "phone", "first_name", "last_name", "password1", "password2")
 
     email = forms.CharField(
         widget=forms.EmailInput(attrs={"placeholder": "Your Email"})
+    )
+    phone = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Your Phone"}))
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={"placeholder": "Your First name"})
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(attrs={"placeholder": "Your Last name"})
     )
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={"placeholder": "Your Password"})
@@ -22,7 +29,7 @@ class SignupForm(UserCreationForm):
 class EditUserForm(UserCreationForm):
     class Meta:
         model = get_user_model()
-        fields = ("first_name", "last_name", "email", "password1", "password2")
+        fields = ("first_name", "last_name", "email", "phone", "password1", "password2")
 
     first_name = forms.CharField(
         widget=forms.TextInput(attrs={"placeholder": "Your First name"})
@@ -33,6 +40,7 @@ class EditUserForm(UserCreationForm):
     email = forms.CharField(
         widget=forms.EmailInput(attrs={"placeholder": "Your Email"})
     )
+    phone = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Your Phone"}))
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={"placeholder": "Your Password"})
     )
