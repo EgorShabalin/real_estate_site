@@ -1,10 +1,10 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(Category)
-admin.site.register(Heating)
-admin.site.register(Photo)
-admin.site.register(Parking)
+# admin.site.register(Category)
+# admin.site.register(Heating)
+# admin.site.register(Photo)
+# admin.site.register(Parking)
 
 
 class PhotoAdmin(admin.TabularInline):

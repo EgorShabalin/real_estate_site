@@ -20,6 +20,8 @@ from config import (
     RESIDENCE_PERMIT,
 )
 
+from .translation import translate
+
 
 class Category(models.Model):
     name = models.CharField(
@@ -34,7 +36,7 @@ class Category(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = "Categories"
+        verbose_name_plural = _("Categories")
 
 
 class Heating(models.Model):
@@ -50,7 +52,7 @@ class Heating(models.Model):
         return self.type
 
     class Meta:
-        verbose_name_plural = "Heating types"
+        verbose_name_plural = _("Heating types")
 
 
 class Parking(models.Model):
@@ -66,7 +68,7 @@ class Parking(models.Model):
         return self.type
 
     class Meta:
-        verbose_name_plural = "Parking types"
+        verbose_name_plural = _("Parking types")
 
 
 class Property(models.Model):
@@ -212,16 +214,16 @@ class Property(models.Model):
         return (
             self.title
             + " | "
-            + "Created at: "
+            + _("Created at: ")
             + str(self.created_at)
             + " | "
-            + "Updated at: "
+            + _("Updated at: ")
             + str(self.updated_at)
         )
 
     class Meta:
         ordering = ("-created_at",)
-        verbose_name_plural = "Emlak listesi | Property list"
+        verbose_name_plural = _("Property list")
 
 
 class Photo(models.Model):
@@ -238,6 +240,33 @@ class Blog(models.Model):
         max_length=255,
     )
     text = models.TextField()
+    en_title = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    en_text = models.TextField(
+        blank=True,
+        null=True,
+    )
+    tr_title = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    tr_text = models.TextField(
+        blank=True,
+        null=True,
+    )
+    ru_title = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    ru_text = models.TextField(
+        blank=True,
+        null=True,
+    )
     active = models.BooleanField(
         default=True,
     )
@@ -247,6 +276,9 @@ class Blog(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
+
+    def __str__(self) -> str:
+        return self.title
 
 
 class BlogPhoto(models.Model):
@@ -285,3 +317,6 @@ class Team(models.Model):
     active = models.BooleanField(
         default=True,
     )
+
+    def __str__(self) -> str:
+        return self.name

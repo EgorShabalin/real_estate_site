@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-29 09:53+0300\n"
+"POT-Creation-Date: 2024-02-29 10:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,30 @@ msgstr "Турецкий"
 #: my_project/settings.py:39
 msgid "Russian"
 msgstr "Русский"
+
+#: my_site/models.py:39
+msgid "Categories"
+msgstr "Категория"
+
+#: my_site/models.py:55
+msgid "Heating types"
+msgstr "Отопление"
+
+#: my_site/models.py:71
+msgid "Parking types"
+msgstr "Парковка"
+
+#: my_site/models.py:217
+msgid "Created at: "
+msgstr "Создано"
+
+#: my_site/models.py:220
+msgid "Updated at: "
+msgstr "Обновлено"
+
+#: my_site/models.py:226
+msgid "Property list"
+msgstr "Список объектов"
 
 #: my_site/templates/my_site/base.html:49
 #: my_site/templates/my_site/profile.html:17

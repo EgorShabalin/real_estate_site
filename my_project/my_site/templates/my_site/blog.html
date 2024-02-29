@@ -14,7 +14,24 @@
 
                 <div class='blog_title'>
 
-                    <h2>{{ article.title }}</h2>
+                    {% get_current_language as current_language %}
+
+                    {% get_available_languages as available_languages %}
+
+                    {% if current_language == 'tr' %}
+
+                    <h2>{{ article.tr_title }}</h2>
+
+                    {% elif current_language == 'en' %}
+
+                    <h2>{{ article.en_title }}</h2>
+
+                    {% elif current_language == 'ru' %}
+
+                    <h2>{{ article.ru_title }}</h2>
+
+                    {% endif %}
+                    
 
                     <small>{{ article.updated_at}}</small>
 
@@ -24,7 +41,19 @@
 
                     <img class='detail_image' src="{{ article.blog_images.first.image.url }}" alt="img">
 
-                    <p>{{ article.text }}</p>
+                    {% if current_language == 'tr' %}
+
+                    <p>{{ article.tr_text }}</p>
+
+                    {% elif current_language == 'en' %}
+
+                    <p>{{ article.en_text }}</p>
+
+                    {% elif current_language == 'ru' %}
+
+                    <p>{{ article.ru_text }}</p>
+
+                    {% endif %}
                 
                 </div>
             

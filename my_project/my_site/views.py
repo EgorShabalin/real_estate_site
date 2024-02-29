@@ -15,6 +15,8 @@ from django.utils.translation import gettext as _
 
 from .forms import SignupForm, EditUserForm
 
+from .translation import translate
+
 
 def property_for_sale_list_view(request):
     for_sale = Property.objects.filter(type_of_deal="SALE", active=True)
@@ -182,6 +184,13 @@ def favorites(request, pk):
 
 def blog(request):
     blog_list = Blog.objects.filter(active=True)
+    for blog in blog_list:
+        blog.en_title = translate(blog.title, "en")
+        blog.en_text = translate(blog.text, "en")
+        blog.tr_title = translate(blog.title, "tr")
+        blog.tr_text = translate(blog.text, "tr")
+        blog.ru_title = translate(blog.title, "ru")
+        blog.ru_text = translate(blog.text, "ru")
 
     return render(request, "my_site/blog.html", {"blog_list": blog_list})
 

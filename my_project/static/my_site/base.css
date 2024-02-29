@@ -298,6 +298,10 @@ h3 {
     padding: 0;
 }
 
+.description p {
+    text-align: justify;
+}
+
 .content {
     margin: 20px;
 }
