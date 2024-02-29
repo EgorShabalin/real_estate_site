@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-22 16:43+0300\n"
+"POT-Creation-Date: 2024-02-29 09:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,28 +160,35 @@ msgid "Email"
 msgstr "Email"
 
 #: my_site/templates/my_site/edit_profile.html:52
+#: my_site/templates/my_site/signup.html:52
+msgid "Phone"
+msgstr "Телефон"
+
+#: my_site/templates/my_site/edit_profile.html:67
 #: my_site/templates/my_site/profile.html:39
+#: my_site/templates/my_site/signup.html:67
 msgid "First name"
 msgstr "Имя"
 
-#: my_site/templates/my_site/edit_profile.html:67
+#: my_site/templates/my_site/edit_profile.html:82
 #: my_site/templates/my_site/profile.html:54
+#: my_site/templates/my_site/signup.html:82
 msgid "Last name"
 msgstr "Фамилия"
 
-#: my_site/templates/my_site/edit_profile.html:83
+#: my_site/templates/my_site/edit_profile.html:98
 #: my_site/templates/my_site/login.html:37
-#: my_site/templates/my_site/signup.html:52
+#: my_site/templates/my_site/signup.html:97
 msgid "Password"
 msgstr "Пароль"
 
-#: my_site/templates/my_site/edit_profile.html:98
-#: my_site/templates/my_site/signup.html:67
+#: my_site/templates/my_site/edit_profile.html:113
+#: my_site/templates/my_site/signup.html:112
 msgid "Repeat Password"
 msgstr "Повторите пароль"
 
-#: my_site/templates/my_site/edit_profile.html:126
-#: my_site/templates/my_site/signup.html:95
+#: my_site/templates/my_site/edit_profile.html:141
+#: my_site/templates/my_site/signup.html:140
 msgid "SUBMIT"
 msgstr "СОХРАНИТЬ"
 
