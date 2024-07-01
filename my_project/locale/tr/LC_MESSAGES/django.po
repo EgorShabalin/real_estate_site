@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-29 10:50+0300\n"
+"POT-Creation-Date: 2024-07-01 19:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgstr "Türkçe"
 #: my_project/settings.py:39
 msgid "Russian"
 msgstr "Rusça"
+
+#: my_project/settings.py:40
+msgid "German"
+msgstr ""
 
 #: my_site/models.py:39
 msgid "Categories"
@@ -105,15 +109,15 @@ msgstr "Aramak"
 msgid "SEARCH"
 msgstr "Aramak"
 
-#: my_site/templates/my_site/base.html:194
+#: my_site/templates/my_site/base.html:217
 msgid "Contact us"
 msgstr "Bize Ulaşın"
 
-#: my_site/templates/my_site/base.html:195
+#: my_site/templates/my_site/base.html:218
 msgid "Privacy Policy"
 msgstr "Gizlilik Politikası"
 
-#: my_site/templates/my_site/base.html:196
+#: my_site/templates/my_site/base.html:219
 msgid "Terms & Conditions"
 msgstr "Şartlar ve koşullar"
 
@@ -213,6 +217,10 @@ msgstr "Şifreyi tekrar girin"
 #: my_site/templates/my_site/signup.html:140
 msgid "SUBMIT"
 msgstr "GÖNDERMEK"
+
+#: my_site/templates/my_site/exchange_rates.html:4
+msgid "Central Bank Rates"
+msgstr ""
 
 #: my_site/templates/my_site/favorites.html:9
 msgid "SAVED PROPERTIES"

@@ -81,13 +81,33 @@ h1 {
 
 .search_bar_container {
     background-color: rgb(25, 103, 134);
-    margin: 0 0 20px 0;
+
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.exchange_rates_container {
+    background-color: rgb(25, 103, 134);
+    margin-bottom: 20px;
+
+}
+
+.exchange_rates {
+    color: lightblue;
+    margin: 0 20px 0 20px;
+    padding: 0 0 10px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.currency_selector {
+    color: lightblue;
 }
 
 .search_bar_form_container {

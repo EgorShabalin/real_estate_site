@@ -17,6 +17,8 @@ from .forms import SignupForm, EditUserForm
 
 from .translation import translate
 
+from .utils import get_exchange_rates
+
 
 def property_for_sale_list_view(request):
     for_sale = Property.objects.filter(type_of_deal="SALE", active=True)
@@ -199,3 +201,34 @@ def team(request):
     team = Team.objects.filter(active=True)
 
     return render(request, "my_site/team.html", {"team": team})
+
+
+def exchange_rates(request):
+    rates = get_exchange_rates()
+    usd_buy = ""
+    usd_sell = ""
+    eur_buy = ""
+    eur_sell = ""
+    for k, v in rates.items():
+        if k == "USD":
+            usd_buy = v["forex_buying"]
+            usd_sell = v["forex_selling"]
+        if k == "EUR":
+            eur_buy = v["forex_buying"]
+            eur_sell = v["forex_selling"]
+        if k == "RUB":
+            rub_buy = v["forex_buying"]
+            rub_sell = v["forex_selling"]
+
+    return render(
+        request,
+        "my_site/exchange_rates.html",
+        {
+            "usd_buy": usd_buy,
+            "usd_sell": usd_sell,
+            "eur_buy": eur_buy,
+            "eur_sell": eur_sell,
+            "rub_buy": rub_buy,
+            "rub_sell": rub_sell,
+        },
+    )

@@ -148,7 +148,7 @@
 
                     {% get_available_languages as available_languages %}
 
-                    <button class='button' style="padding: 10px; min-width: fit-content;" type="submit" name="language" value="{% if current_language == 'tr' %}en{% elif current_language == 'en' %}ru{% elif current_language == 'ru' %}tr{% endif %}">
+                    <button class='button' style="padding: 10px; min-width: fit-content;" type="submit" name="language" value="{% if current_language == 'tr' %}en{% elif current_language == 'en' %}ru{% elif current_language == 'ru' %}de{% elif current_language == 'de' %}tr{% endif %}">
 
                         {% if current_language == 'tr' %}
 
@@ -162,6 +162,10 @@
 
                         🇷🇺
 
+                        {% elif current_language == 'de' %}
+
+                        🇩🇪
+
                         {% endif %}
                         
                     </button>
@@ -171,6 +175,25 @@
             </div>
 
         </div>
+        <div class='exchange_rates_container'>
+            <div id='exchange_rates' class='exchange_rates'>            
+
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                fetchExchangeRates();
+            });
+
+            function fetchExchangeRates() {
+                fetch('{% url "my_site:exchange_rates" %}')
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('exchange_rates').innerHTML = html;
+                    });
+            }
+            </script>
 
         {% block content %}
 
@@ -189,13 +212,13 @@
                     <a href="https://wa.me/905376321145"><i class="fa fa-whatsapp"></i></a>
                 </div>
 
-                <div class="row">
+                <!--<div class="row">
                     <ul>
                         <li><a href="{% url 'my_site:contacts' %}">{% trans 'Contact us' %}</a></li>
                         <li><a href="#">{% trans 'Privacy Policy' %}</a></li>
                         <li><a href="#">{% trans 'Terms & Conditions' %}</a></li>
                     </ul>
-                </div>
+                </div>-->
 
                 <div class="row">
                     <b>HAKAN ARSLAN EMLAK</b> Copyright © 2023 - All rights reserved || Created by: <a href="mailto:egor.shabalin.wd@gmail.com"><b>Egor Shabalin</b></a>

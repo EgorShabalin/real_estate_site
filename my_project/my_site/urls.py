@@ -38,4 +38,5 @@ urlpatterns = [
     path("blog/", blog, name="blog"),
     path("team/", team, name="team"),
     path("set-language/", set_language, name="set_language"),
+    path("exchange_rates/", exchange_rates, name="exchange_rates"),
 ]
