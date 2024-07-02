@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 19:00+0300\n"
+"POT-Creation-Date: 2024-07-02 17:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,68 +60,82 @@ msgstr "Обновлено"
 msgid "Property list"
 msgstr "Список объектов"
 
-#: my_site/templates/my_site/base.html:49
+#: my_site/templates/my_site/base.html:51
 #: my_site/templates/my_site/profile.html:17
 msgid "MY PROFILE"
 msgstr "МОЙ ПРОФИЛЬ"
 
-#: my_site/templates/my_site/base.html:51
+#: my_site/templates/my_site/base.html:53
 msgid "LOG OUT"
 msgstr "ВЫЙТИ"
 
-#: my_site/templates/my_site/base.html:57
-#: my_site/templates/my_site/base.html:61
+#: my_site/templates/my_site/base.html:59
+#: my_site/templates/my_site/base.html:63
 msgid "Welcome,"
 msgstr "Добро пожаловать,"
 
-#: my_site/templates/my_site/base.html:67
+#: my_site/templates/my_site/base.html:69
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: my_site/templates/my_site/base.html:69
+#: my_site/templates/my_site/base.html:71
 #: my_site/templates/my_site/login.html:11
 msgid "Log in"
 msgstr "Вход"
 
-#: my_site/templates/my_site/base.html:109
+#: my_site/templates/my_site/base.html:111
 msgid "FOR SALE"
 msgstr "ПРОДАЖА"
 
-#: my_site/templates/my_site/base.html:111
+#: my_site/templates/my_site/base.html:113
 msgid "FOR RENT"
 msgstr "АРЕНДА"
 
-#: my_site/templates/my_site/base.html:113
+#: my_site/templates/my_site/base.html:115
 msgid "BLOG"
 msgstr "БЛОГ"
 
-#: my_site/templates/my_site/base.html:115
+#: my_site/templates/my_site/base.html:117
 msgid "OUR TEAM"
 msgstr "НАША КОМАНДА"
 
-#: my_site/templates/my_site/base.html:117
+#: my_site/templates/my_site/base.html:119
 msgid "CONTACTS"
 msgstr "КОНТАКТЫ"
 
-#: my_site/templates/my_site/base.html:131
+#: my_site/templates/my_site/base.html:133
 msgid "Search"
 msgstr "Поиск"
 
-#: my_site/templates/my_site/base.html:133
+#: my_site/templates/my_site/base.html:135
 msgid "SEARCH"
 msgstr "ПОИСК"
 
-#: my_site/templates/my_site/base.html:217
+#: my_site/templates/my_site/base.html:186
+msgid "Select currency"
+msgstr "Выбрать валюту"
+
+#: my_site/templates/my_site/base.html:233
 msgid "Contact us"
 msgstr "Свяжитесь с нами"
 
-#: my_site/templates/my_site/base.html:218
+#: my_site/templates/my_site/base.html:234
 msgid "Privacy Policy"
 msgstr "Политика конфиденциальности"
 
-#: my_site/templates/my_site/base.html:219
+#: my_site/templates/my_site/base.html:235
 msgid "Terms & Conditions"
 msgstr "Условия"
+
+#: my_site/templates/my_site/base.html:246
+msgid ""
+"This website uses cookies to ensure you get the best experience on our "
+"website."
+msgstr "Этот вэбсайт использует куки для Вашего удобства."
+
+#: my_site/templates/my_site/base.html:247
+msgid "Got it!"
+msgstr "ОК"
 
 #: my_site/templates/my_site/contacts.html:13
 msgid "FEEL FREE TO CONTACT US!"
@@ -222,7 +236,23 @@ msgstr "СОХРАНИТЬ"
 
 #: my_site/templates/my_site/exchange_rates.html:4
 msgid "Central Bank Rates"
-msgstr ""
+msgstr "Курсы Центрального Банка"
+
+#: my_site/templates/my_site/exchange_rates.html:6
+msgid "Show all currencies"
+msgstr "Показать все валюты"
+
+#: my_site/templates/my_site/exchange_rates.html:12
+#: my_site/templates/my_site/exchange_rates.html:25
+#: my_site/templates/my_site/exchange_rates.html:38
+msgid "Buying"
+msgstr "Покупка"
+
+#: my_site/templates/my_site/exchange_rates.html:16
+#: my_site/templates/my_site/exchange_rates.html:29
+#: my_site/templates/my_site/exchange_rates.html:42
+msgid "Selling"
+msgstr "Продажа"
 
 #: my_site/templates/my_site/favorites.html:9
 msgid "SAVED PROPERTIES"
@@ -415,3 +445,9 @@ msgstr "Вы не ввели запрос"
 #: my_site/templates/my_site/thank_you.html:11
 msgid "Thank you! We got your request!"
 msgstr "Спасибо! Мы получили ваше сообщение!"
+
+#~ msgid "BUY"
+#~ msgstr "Покупка"
+
+#~ msgid "SELL"
+#~ msgstr "Продажа"

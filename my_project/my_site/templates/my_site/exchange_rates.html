@@ -1,17 +1,19 @@
 {% load i18n %}
 
 <div>
-    <h4>{% trans 'Central Bank Rates' %}:</h4>
+    <b>{% trans 'Central Bank Rates' %}:</b>
+    <br>
+    <i><a href='https://www.tcmb.gov.tr/kurlar/today.xml' target="_blank" style='text-decoration: underline; color: inherit;' >{% trans 'Show all currencies' %}</a></i>
 </div>
 
 <div class='exchange_rates_element'>
 <table>
     <tr>
-        <td>USD BUY: </td>
+        <td>USD {% trans 'Buying' %}: </td>
         <td>{{ usd_buy }} TL</td>
     </tr>
     <tr>
-        <td>USD SELL: </td>
+        <td>USD {% trans 'Selling' %}: </td>
         <td>{{ usd_sell }} TL</td>
     </tr>
 </table>
@@ -20,11 +22,11 @@
 <div class='exchange_rates_element'>
 <table>
     <tr>
-        <td>EUR BUY: </td>
+        <td>EUR {% trans 'Buying' %}: </td>
         <td>{{ eur_buy }} TL</td>
     </tr>
     <tr>
-        <td>EUR SELL: </td>
+        <td>EUR {% trans 'Selling' %}: </td>
         <td>{{ eur_sell }} TL</td>
     </tr>
 </table>
@@ -33,17 +35,13 @@
 <div class='exchange_rates_element'>
 <table>
     <tr>
-        <td>RUB BUY: </td>
+        <td>RUB {% trans 'Buying' %}: </td>
         <td>{{ rub_buy }} TL</td>
     </tr>
     <tr>
-        <td>RUB SELL: </td>
+        <td>RUB {% trans 'Selling' %}: </td>
         <td>{{ rub_sell }} TL</td>
     </tr>
 </table>
-</div>
-
-<div class='exchange_rates_element'>
-
 </div>
  

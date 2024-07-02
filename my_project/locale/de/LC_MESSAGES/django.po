@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 19:00+0300\n"
+"POT-Creation-Date: 2024-07-02 17:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: my_project/settings.py:37
 msgid "English"
 msgstr "Englisch"
@@ -57,68 +58,84 @@ msgstr "Aktualisiert am:"
 msgid "Property list"
 msgstr "Immobilienliste"
 
-#: my_site/templates/my_site/base.html:49
+#: my_site/templates/my_site/base.html:51
 #: my_site/templates/my_site/profile.html:17
 msgid "MY PROFILE"
 msgstr "MEIN PROFIL"
 
-#: my_site/templates/my_site/base.html:51
+#: my_site/templates/my_site/base.html:53
 msgid "LOG OUT"
 msgstr "AUSLOGGEN"
 
-#: my_site/templates/my_site/base.html:57
-#: my_site/templates/my_site/base.html:61
+#: my_site/templates/my_site/base.html:59
+#: my_site/templates/my_site/base.html:63
 msgid "Welcome,"
 msgstr "Willkommen,"
 
-#: my_site/templates/my_site/base.html:67
+#: my_site/templates/my_site/base.html:69
 msgid "Sign up"
 msgstr "Melden Sie sich an"
 
-#: my_site/templates/my_site/base.html:69
+#: my_site/templates/my_site/base.html:71
 #: my_site/templates/my_site/login.html:11
 msgid "Log in"
 msgstr "Anmeldung"
 
-#: my_site/templates/my_site/base.html:109
+#: my_site/templates/my_site/base.html:111
 msgid "FOR SALE"
 msgstr "ZU VERKAUFEN"
 
-#: my_site/templates/my_site/base.html:111
+#: my_site/templates/my_site/base.html:113
 msgid "FOR RENT"
 msgstr "ZU VERMIETEN"
 
-#: my_site/templates/my_site/base.html:113
+#: my_site/templates/my_site/base.html:115
 msgid "BLOG"
 msgstr "Ratgeber"
 
-#: my_site/templates/my_site/base.html:115
+#: my_site/templates/my_site/base.html:117
 msgid "OUR TEAM"
 msgstr "UNSER TEAM"
 
-#: my_site/templates/my_site/base.html:117
+#: my_site/templates/my_site/base.html:119
 msgid "CONTACTS"
 msgstr "KONTAKTE"
 
-#: my_site/templates/my_site/base.html:131
+#: my_site/templates/my_site/base.html:133
 msgid "Search"
 msgstr "Suchen"
 
-#: my_site/templates/my_site/base.html:133
+#: my_site/templates/my_site/base.html:135
 msgid "SEARCH"
 msgstr "SUCHEN"
 
-#: my_site/templates/my_site/base.html:217
+#: my_site/templates/my_site/base.html:186
+msgid "Select currency"
+msgstr "Währung auswählen"
+
+#: my_site/templates/my_site/base.html:233
 msgid "Contact us"
 msgstr "Kontaktiere uns"
 
-#: my_site/templates/my_site/base.html:218
+#: my_site/templates/my_site/base.html:234
 msgid "Privacy Policy"
 msgstr "Datenschutzrichtlinie"
 
-#: my_site/templates/my_site/base.html:219
+#: my_site/templates/my_site/base.html:235
 msgid "Terms & Conditions"
 msgstr "Geschäftsbedingungen"
+
+#: my_site/templates/my_site/base.html:246
+msgid ""
+"This website uses cookies to ensure you get the best experience on our "
+"website."
+msgstr ""
+"Diese Website verwendet Cookies, um Ihnen die bestmögliche Nutzung unserer "
+"Website zu ermöglichen."
+
+#: my_site/templates/my_site/base.html:247
+msgid "Got it!"
+msgstr "OK"
 
 #: my_site/templates/my_site/contacts.html:13
 msgid "FEEL FREE TO CONTACT US!"
@@ -146,7 +163,8 @@ msgstr "Ihre Nachricht"
 
 #: my_site/templates/my_site/contacts.html:77
 msgid "Enter your message starting from the ID number of the property..."
-msgstr "Geben Sie Ihre Nachricht beginnend mit der ID-Nummer der Immobilie ein..."
+msgstr ""
+"Geben Sie Ihre Nachricht beginnend mit der ID-Nummer der Immobilie ein..."
 
 #: my_site/templates/my_site/contacts.html:85
 msgid "SEND"
@@ -163,7 +181,8 @@ msgstr "PROFIL BEARBEITEN"
 #: my_site/templates/my_site/edit_profile.html:23
 #: my_site/templates/my_site/signup.html:23
 msgid "Your password can’t be too similar to your other personal information"
-msgstr "Ihr Passwort darf Ihren anderen persönlichen Daten nicht zu ähnlich sein"
+msgstr ""
+"Ihr Passwort darf Ihren anderen persönlichen Daten nicht zu ähnlich sein"
 
 #: my_site/templates/my_site/edit_profile.html:24
 #: my_site/templates/my_site/signup.html:24
@@ -220,6 +239,22 @@ msgstr "EINREICHEN"
 #: my_site/templates/my_site/exchange_rates.html:4
 msgid "Central Bank Rates"
 msgstr "Zinssätze der Zentralbanken"
+
+#: my_site/templates/my_site/exchange_rates.html:6
+msgid "Show all currencies"
+msgstr "Zeige alle Währungen"
+
+#: my_site/templates/my_site/exchange_rates.html:12
+#: my_site/templates/my_site/exchange_rates.html:25
+#: my_site/templates/my_site/exchange_rates.html:38
+msgid "Buying"
+msgstr "Kaufen"
+
+#: my_site/templates/my_site/exchange_rates.html:16
+#: my_site/templates/my_site/exchange_rates.html:29
+#: my_site/templates/my_site/exchange_rates.html:42
+msgid "Selling"
+msgstr "Verkaufen"
 
 #: my_site/templates/my_site/favorites.html:9
 msgid "SAVED PROPERTIES"
@@ -412,3 +447,9 @@ msgstr "Sie haben keine Suchanfrage eingegeben"
 #: my_site/templates/my_site/thank_you.html:11
 msgid "Thank you! We got your request!"
 msgstr "Danke! Wir haben Ihre Anfrage erhalten!"
+
+#~ msgid "BUY"
+#~ msgstr "Kaufen"
+
+#~ msgid "SELL"
+#~ msgstr "Verkaufen"

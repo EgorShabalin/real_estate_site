@@ -10,6 +10,8 @@
 
         <title>HAKAN ARSLAN EMLAK</title>
 
+        <link rel="shortcut icon" type="image/png" href="{% static 'my_site/favicon.ico' %}"/>
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -180,6 +182,18 @@
 
             </div>
         </div>
+        <div class='currency_selector_container'>
+            <h5>{% trans 'Select currency' %}:
+            <select id="currency_selector" class='currency_selector'>
+                <option value="TRY">TRY</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+            </h5>
+        </div>
+
+        
+
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -205,11 +219,11 @@
 
             <div class="footer">
                 <div class="row">
-                    <a href="https://www.facebook.com/profile.php?id=100043587060070"><i class="fa fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/antalya.hakan.arslan.emlak/"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>                    
-                    <a href="https://t.me/+905376321145"><i class="fa fa-telegram"></i></a>
-                    <a href="https://wa.me/905376321145"><i class="fa fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100043587060070" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/antalya.hakan.arslan.emlak/" target="_blank"><i class="fa fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>                    
+                    <a href="https://t.me/+905376321145" target="_blank"><i class="fa fa-telegram"></i></a>
+                    <a href="https://wa.me/905376321145" target="_blank"><i class="fa fa-whatsapp"></i></a>
                 </div>
 
                 <!--<div class="row">
@@ -225,6 +239,45 @@
                 </div>
             </div>
         </footer>
+
+        <div id="cookieConsent" style="display:none;">
+            <p>{% trans 'This website uses cookies to ensure you get the best experience on our website.' %}</p>
+            <button onclick="acceptCookies()">{% trans 'Got it!' %}</button>
+        </div>
+
+        <script>
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+
+        function acceptCookies() {
+            setCookie('cookieConsent', 'accepted', 365);
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+
+        window.onload = function() {
+            if (!getCookie('cookieConsent')) {
+                document.getElementById('cookieConsent').style.display = 'block';
+            }
+        }
+        </script>
 
     </body>
 
