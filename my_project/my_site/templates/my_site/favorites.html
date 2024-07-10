@@ -102,9 +102,21 @@
                     <td>
 
                         {% if item.type_of_deal == 'SALE' %}
-                        <span style="color: black"><b>{{ item.price }} TL</b></span>
+                        <span class='price' 
+                            data-try="{{ item.price|intspace }}"
+                            data-usd="{{ item.price|usd|intspace }}"
+                            data-eur="{{ item.price|eur|intspace }}"
+                            data-rub="{{ item.price|rub|intspace }}">
+                            <b><span class="price-value">{{ item.price|intspace }} TL</b>
+                        </span>
                         {% else %}
-                        <span style="color: black"><b>{{ item.price }} TL/month</b></span>
+                        <span class='price' 
+                            data-try="{{ item.price|intspace }}"
+                            data-usd="{{ item.price|usd|intspace }}"
+                            data-eur="{{ item.price|eur|intspace }}"
+                            data-rub="{{ item.price|rub|intspace }}">
+                            <b><span class="price-value">{{ item.price|intspace }}</span> TL/{% trans 'month' %}</b>
+                        </span>
                         {% endif %}
 
                     </td>

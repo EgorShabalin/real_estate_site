@@ -33,3 +33,65 @@ def get_exchange_rates():
     else:
         print(f"Failed to fetch data: HTTP {response.status_code}")
         return None
+
+
+def get_prices(price):
+    price = price.replace(" ", "")
+    price = float(price)
+    rates = get_exchange_rates()
+    for k, v in rates.items():
+        if k == "USD":
+            usd_sell = v["forex_selling"]
+        if k == "EUR":
+            eur_sell = v["forex_selling"]
+        if k == "RUB":
+            rub_sell = v["forex_selling"]
+
+    n = 1.01
+    usd_price = (price / float(usd_sell)) * n
+    eur_price = (price / float(eur_sell)) * n
+    rub_price = (price / float(rub_sell)) * n
+
+    return [int(usd_price), int(eur_price), int(rub_price)]
+
+
+def get_usd(price):
+    price = price.replace(" ", "")
+    price = float(price)
+    rates = get_exchange_rates()
+    for k, v in rates.items():
+        if k == "USD":
+            rate = v["forex_selling"]
+
+    n = 1.01
+    usd_price = (price / float(rate)) * n
+
+    return int(usd_price)
+
+
+def get_eur(price):
+    price = price.replace(" ", "")
+    price = float(price)
+    rates = get_exchange_rates()
+    for k, v in rates.items():
+        if k == "EUR":
+            rate = v["forex_selling"]
+
+    n = 1.01
+    eur_price = (price / float(rate)) * n
+
+    return int(eur_price)
+
+
+def get_rub(price):
+    price = price.replace(" ", "")
+    price = float(price)
+    rates = get_exchange_rates()
+    for k, v in rates.items():
+        if k == "RUB":
+            rate = v["forex_selling"]
+
+    n = 1.01
+    rub_price = (price / float(rate)) * n
+
+    return int(rub_price)

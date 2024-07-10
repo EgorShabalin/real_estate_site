@@ -267,6 +267,15 @@ class Blog(models.Model):
         blank=True,
         null=True,
     )
+    de_title = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    de_text = models.TextField(
+        blank=True,
+        null=True,
+    )
     active = models.BooleanField(
         default=True,
     )

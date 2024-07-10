@@ -30,6 +30,10 @@
 
                     <h2>{{ article.ru_title }}</h2>
 
+                    {% elif current_language == 'de' %}
+
+                    <h2>{{ article.de_title }}</h2>
+
                     {% endif %}
                     
 
@@ -43,15 +47,19 @@
 
                     {% if current_language == 'tr' %}
 
-                    <p>{{ article.tr_text }}</p>
+                    <p>{{ article.tr_text|linebreaks }}</p>
 
                     {% elif current_language == 'en' %}
 
-                    <p>{{ article.en_text }}</p>
+                    <p>{{ article.en_text|linebreaks }}</p>
 
                     {% elif current_language == 'ru' %}
 
-                    <p>{{ article.ru_text }}</p>
+                    <p>{{ article.ru_text|linebreaks }}</p>
+
+                    {% elif current_language == 'de' %}
+
+                    <p>{{ article.de_text|linebreaks }}</p>
 
                     {% endif %}
                 

@@ -193,6 +193,8 @@ def blog(request):
         blog.tr_text = translate(blog.text, "tr")
         blog.ru_title = translate(blog.title, "ru")
         blog.ru_text = translate(blog.text, "ru")
+        blog.de_title = translate(blog.title, "de")
+        blog.de_text = translate(blog.text, "de")
 
     return render(request, "my_site/blog.html", {"blog_list": blog_list})
 

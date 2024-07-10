@@ -188,10 +188,63 @@
                 <option value="TRY">TRY</option>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
+                <option value="RUB">RUB</option>
             </select>
             </h5>
         </div>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const currencySwitcher = document.getElementById('currency_selector');
+                
+                currencySwitcher.addEventListener('change', function() {
+                    const newCurrency = this.value;
+                    switchCurrency(newCurrency);
+                });
+
+                function switchCurrency(currency) {
+                    const prices = document.querySelectorAll('.price');
+                    
+                    prices.forEach(priceElement => {
+                        let newPrice;
+                        switch(currency) {
+                            case 'USD':
+                                newPrice = priceElement.dataset.usd;
+                                break;
+                            case 'EUR':
+                                newPrice = priceElement.dataset.eur;
+                                break;
+                            case 'RUB':
+                                newPrice = priceElement.dataset.rub;
+                                break;
+                            default:
+                                newPrice = priceElement.dataset.try;
+                        }
+                        
+                        const priceValueElement = priceElement.querySelector('.price-value');
+                        if (priceValueElement) {
+                            priceValueElement.textContent = newPrice;
+                        }
+
+                        // Update the currency symbol
+                        const currencySymbol = currency === 'TRY' ? 'TL' : currency;
+                        
+                        // Check if the price contains additional text
+                        const hasAdditionalText = priceElement.textContent.includes('/');
+                        
+                        if (hasAdditionalText) {
+                            // If there's additional text, replace just the currency symbol
+                            priceElement.innerHTML = priceElement.innerHTML.replace(/TL|USD|EUR|RUB/, currencySymbol);
+                        } else {
+                            // If it's a simple price, replace the whole content
+                            priceElement.innerHTML = `<b>${newPrice} ${currencySymbol}</b>`;
+                        }
+                    });
+
+                    
+                }
+                });
+        </script>
         
 
 
@@ -207,7 +260,7 @@
                         document.getElementById('exchange_rates').innerHTML = html;
                     });
             }
-            </script>
+        </script>
 
         {% block content %}
 

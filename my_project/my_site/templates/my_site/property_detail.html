@@ -2,6 +2,10 @@
 
 {% load i18n %}
 
+{% load number_filters %}
+
+{% load price_converter %}
+
 {% block content %}
 
 <h2 class='page_heading'>{% trans 'PROPERTY DETAILS' %}</h2>
@@ -117,9 +121,21 @@
                         <td>
 
                             {% if property_detail.type_of_deal == 'SALE' %}
-                            <span class="price"><b>{{ property_detail.price }} TL</b></span>
+                            <span class='price' 
+                                data-try="{{ property_detail.price|intspace }}"
+                                data-usd="{{ property_detail.price|usd|intspace }}"
+                                data-eur="{{ property_detail.price|eur|intspace }}"
+                                data-rub="{{ property_detail.price|rub|intspace }}">
+                                <b><span class="price-value">{{ property_detail.price|intspace }} TL</b>
+                            </span>
                             {% else %}
-                            <span class="price"><b>{{ property_detail.price }} TL/month</b></span>
+                            <span class='price' 
+                                data-try="{{ property_detail.price|intspace }}"
+                                data-usd="{{ property_detail.price|usd|intspace }}"
+                                data-eur="{{ property_detail.price|eur|intspace }}"
+                                data-rub="{{ property_detail.price|rub|intspace }}">
+                                <b><span class="price-value">{{ property_detail.price|intspace }}</span> TL/{% trans 'month' %}</b>
+                            </span>
                             {% endif %}
 
 
