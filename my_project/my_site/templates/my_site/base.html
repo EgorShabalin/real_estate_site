@@ -196,15 +196,24 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const currencySwitcher = document.getElementById('currency_selector');
-                
+
+                // Get the saved currency from the cookie and set it as the selected option
+                const savedCurrency = getCookie('selectedCurrency');
+                if (savedCurrency) {
+                    currencySwitcher.value = savedCurrency;
+                    switchCurrency(savedCurrency);
+                }
+
                 currencySwitcher.addEventListener('change', function() {
                     const newCurrency = this.value;
                     switchCurrency(newCurrency);
+                    // Save the selected currency in a cookie
+                    setCookie('selectedCurrency', newCurrency, 7); // Cookie expires in 7 days
                 });
 
                 function switchCurrency(currency) {
                     const prices = document.querySelectorAll('.price');
-                    
+
                     prices.forEach(priceElement => {
                         let newPrice;
                         switch(currency) {
@@ -220,7 +229,7 @@
                             default:
                                 newPrice = priceElement.dataset.try;
                         }
-                        
+
                         const priceValueElement = priceElement.querySelector('.price-value');
                         if (priceValueElement) {
                             priceValueElement.textContent = newPrice;
@@ -228,10 +237,10 @@
 
                         // Update the currency symbol
                         const currencySymbol = currency === 'TRY' ? 'TL' : currency;
-                        
+
                         // Check if the price contains additional text
                         const hasAdditionalText = priceElement.textContent.includes('/');
-                        
+
                         if (hasAdditionalText) {
                             // If there's additional text, replace just the currency symbol
                             priceElement.innerHTML = priceElement.innerHTML.replace(/TL|USD|EUR|RUB/, currencySymbol);
@@ -240,10 +249,29 @@
                             priceElement.innerHTML = `<b>${newPrice} ${currencySymbol}</b>`;
                         }
                     });
-
-                    
                 }
-                });
+
+                function setCookie(name, value, days) {
+                    let expires = "";
+                    if (days) {
+                        const date = new Date();
+                        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                        expires = "; expires=" + date.toUTCString();
+                    }
+                    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+                }
+
+                function getCookie(name) {
+                    const nameEQ = name + "=";
+                    const ca = document.cookie.split(';');
+                    for(let i = 0; i < ca.length; i++) {
+                        let c = ca[i];
+                        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                    }
+                    return null;
+                }
+            });
         </script>
         
 

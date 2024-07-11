@@ -35,6 +35,9 @@ def get_exchange_rates():
         return None
 
 
+n = 1.005
+
+
 def get_prices(price):
     price = price.replace(" ", "")
     price = float(price)
@@ -47,7 +50,6 @@ def get_prices(price):
         if k == "RUB":
             rub_sell = v["forex_selling"]
 
-    n = 1.01
     usd_price = (price / float(usd_sell)) * n
     eur_price = (price / float(eur_sell)) * n
     rub_price = (price / float(rub_sell)) * n
@@ -63,7 +65,6 @@ def get_usd(price):
         if k == "USD":
             rate = v["forex_selling"]
 
-    n = 1.01
     usd_price = (price / float(rate)) * n
 
     return int(usd_price)
@@ -77,7 +78,6 @@ def get_eur(price):
         if k == "EUR":
             rate = v["forex_selling"]
 
-    n = 1.01
     eur_price = (price / float(rate)) * n
 
     return int(eur_price)
@@ -91,7 +91,6 @@ def get_rub(price):
         if k == "RUB":
             rate = v["forex_selling"]
 
-    n = 1.01
     rub_price = (price / float(rate)) * n
 
     return int(rub_price)

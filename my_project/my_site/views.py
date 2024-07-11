@@ -187,14 +187,30 @@ def favorites(request, pk):
 def blog(request):
     blog_list = Blog.objects.filter(active=True)
     for blog in blog_list:
-        blog.en_title = translate(blog.title, "en")
-        blog.en_text = translate(blog.text, "en")
-        blog.tr_title = translate(blog.title, "tr")
-        blog.tr_text = translate(blog.text, "tr")
-        blog.ru_title = translate(blog.title, "ru")
-        blog.ru_text = translate(blog.text, "ru")
-        blog.de_title = translate(blog.title, "de")
-        blog.de_text = translate(blog.text, "de")
+        if not blog.en_title:
+            blog.en_title = translate(blog.title, "en")
+            blog.save()
+        if not blog.en_text:
+            blog.en_text = translate(blog.text, "en")
+            blog.save()
+        if not blog.tr_title:
+            blog.tr_title = translate(blog.title, "tr")
+            blog.save()
+        if not blog.tr_text:
+            blog.tr_text = translate(blog.text, "tr")
+            blog.save()
+        if not blog.ru_title:
+            blog.ru_title = translate(blog.title, "ru")
+            blog.save()
+        if not blog.ru_text:
+            blog.ru_text = translate(blog.text, "ru")
+            blog.save()
+        if not blog.de_title:
+            blog.de_title = translate(blog.title, "de")
+            blog.save()
+        if not blog.de_text:
+            blog.de_text = translate(blog.text, "de")
+            blog.save()
 
     return render(request, "my_site/blog.html", {"blog_list": blog_list})
 
