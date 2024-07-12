@@ -2,6 +2,10 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 
+from .models import Property, Photo
+
+from django.forms.models import inlineformset_factory
+
 
 class SignupForm(UserCreationForm):
     class Meta:
@@ -56,3 +60,116 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={"placeholder": "Your Password"})
     )
+
+
+class NewPropertyForm(forms.ModelForm):
+    class Meta:
+        model = Property
+
+        fields = (
+            "title",
+            "price",
+            "province",
+            "district",
+            "address",
+            "floor_number",
+            "total_floors",
+            "parking",
+            "rooms",
+            "area",
+            "heating",
+            "elevator",
+            "frontage",
+            "iskan",
+            "expertise",
+            "residence_permit",
+            "description",
+            "category",
+            "type_of_deal",
+            "active",
+        )
+
+        widgets = {
+            "title": forms.TextInput(),
+            "price": forms.TextInput(),
+            "province": forms.TextInput(),
+            "district": forms.Select(),
+            "address": forms.TextInput(),
+            "floor_number": forms.TextInput(),
+            "total_floors": forms.TextInput(),
+            "parking": forms.Select(),
+            "rooms": forms.TextInput(),
+            "area": forms.TextInput(),
+            "heating": forms.Select(),
+            "elevator": forms.Select(),
+            "frontage": forms.Select(),
+            "iskan": forms.Select(),
+            "expertise": forms.Select(),
+            "residence_permit": forms.Select(),
+            "description": forms.Textarea(),
+            "category": forms.Select(),
+            "type_of_deal": forms.Select(),
+            "active": forms.CheckboxInput(),
+        }
+
+
+class EditPropertyForm(forms.ModelForm):
+    class Meta:
+        model = Property
+
+        fields = (
+            "title",
+            "price",
+            "province",
+            "district",
+            "address",
+            "floor_number",
+            "total_floors",
+            "parking",
+            "rooms",
+            "area",
+            "heating",
+            "elevator",
+            "frontage",
+            "iskan",
+            "expertise",
+            "residence_permit",
+            "description",
+            "category",
+            "type_of_deal",
+            "active",
+        )
+
+        widgets = {
+            "title": forms.TextInput(),
+            "price": forms.TextInput(),
+            "province": forms.TextInput(),
+            "district": forms.Select(),
+            "address": forms.TextInput(),
+            "floor_number": forms.TextInput(),
+            "total_floors": forms.TextInput(),
+            "parking": forms.Select(),
+            "rooms": forms.TextInput(),
+            "area": forms.TextInput(),
+            "heating": forms.Select(),
+            "elevator": forms.Select(),
+            "frontage": forms.Select(),
+            "iskan": forms.Select(),
+            "expertise": forms.Select(),
+            "residence_permit": forms.Select(),
+            "description": forms.Textarea(),
+            "category": forms.Select(),
+            "type_of_deal": forms.Select(),
+            "active": forms.CheckboxInput(),
+        }
+
+
+class PhotoForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ["photo"]
+
+
+PhotoFormSet = inlineformset_factory(
+    Property, Photo, form=PhotoForm, extra=20, can_delete=True
+)

@@ -13,7 +13,13 @@ from django.contrib.auth import get_user_model
 
 from django.utils.translation import gettext as _
 
-from .forms import SignupForm, EditUserForm
+from .forms import (
+    SignupForm,
+    EditUserForm,
+    NewPropertyForm,
+    EditPropertyForm,
+    PhotoFormSet,
+)
 
 from .translation import translate
 
@@ -222,21 +228,29 @@ def team(request):
 
 
 def exchange_rates(request):
-    rates = get_exchange_rates()
-    usd_buy = ""
-    usd_sell = ""
-    eur_buy = ""
-    eur_sell = ""
-    for k, v in rates.items():
-        if k == "USD":
-            usd_buy = v["forex_buying"]
-            usd_sell = v["forex_selling"]
-        if k == "EUR":
-            eur_buy = v["forex_buying"]
-            eur_sell = v["forex_selling"]
-        if k == "RUB":
-            rub_buy = v["forex_buying"]
-            rub_sell = v["forex_selling"]
+    try:
+        rates = get_exchange_rates()
+        usd_buy = ""
+        usd_sell = ""
+        eur_buy = ""
+        eur_sell = ""
+        for k, v in rates.items():
+            if k == "USD":
+                usd_buy = v["forex_buying"]
+                usd_sell = v["forex_selling"]
+            if k == "EUR":
+                eur_buy = v["forex_buying"]
+                eur_sell = v["forex_selling"]
+            if k == "RUB":
+                rub_buy = v["forex_buying"]
+                rub_sell = v["forex_selling"]
+    except:
+        usd_buy = ""
+        usd_sell = ""
+        eur_buy = ""
+        eur_sell = ""
+        rub_buy = ""
+        rub_sell = ""
 
     return render(
         request,
@@ -250,3 +264,75 @@ def exchange_rates(request):
             "rub_sell": rub_sell,
         },
     )
+
+
+def dashboard(request):
+    properties = Property.objects.all()
+    blog_posts = Blog.objects.all()
+    team_mates = Team.objects.all()
+
+    return render(
+        request,
+        "my_site/dashboard.html",
+        {
+            "properties": properties,
+            "blog_posts": blog_posts,
+            "team_mates": team_mates,
+        },
+    )
+
+
+@login_required
+def new_property(request):
+    if request.user.is_staff:
+        if request.method == "POST":
+            form = NewPropertyForm(request.POST, request.FILES)
+            if form.is_valid():
+                property = form.save(commit=False)
+                formset = PhotoFormSet(request.POST, request.FILES, instance=property)
+                if formset.is_valid():
+                    property.save()
+                    formset.save()
+                    return redirect("my_site:dashboard")
+        else:
+            form = NewPropertyForm()
+            formset = PhotoFormSet(instance=Property())
+
+        return render(
+            request, "my_site/new_property.html", {"form": form, "formset": formset}
+        )
+    else:
+        # Handle unauthorized access
+        return redirect("my_site:dashboard")
+
+
+@login_required
+def edit_property(request, pk):
+    property = get_object_or_404(Property, pk=pk)
+
+    if request.user.is_staff:
+        if request.method == "POST":
+            form = EditPropertyForm(request.POST, request.FILES, instance=property)
+            formset = PhotoFormSet(request.POST, request.FILES, instance=property)
+
+            if form.is_valid() and formset.is_valid():
+                form.save()
+                formset.save()
+                return redirect("my_site:dashboard")
+        else:
+            form = EditPropertyForm(instance=property)
+            formset = PhotoFormSet(instance=property)
+
+        return render(
+            request, "my_site/edit_property.html", {"form": form, "formset": formset}
+        )
+
+
+@login_required
+def delete_property(request, pk):
+    property = get_object_or_404(Property, pk=pk)
+    if request.user.is_staff:
+        property.delete()
+        return redirect("my_site:dashboard")
+    else:
+        return redirect("my_site:dashboard")

@@ -46,9 +46,13 @@
 
                 {% if request.user.is_authenticated %}
 
-                    <div class='login_signup_authenticated'>                        
+                    <div class='login_signup_authenticated'>
 
-                        <a class='button' id="button" href="{% url 'my_site:profile' request.user.id %}">{% trans 'MY PROFILE' %}</a>                    
+                        {% if request.user.is_staff %}
+                        <a class='button' id="button" href="{% url 'my_site:dashboard' %}">{% trans 'DASHBOARD' %}</a>
+                        {% endif %}
+
+                        <a class='button' id="button" href="{% url 'my_site:profile' request.user.id %}">{% trans 'MY PROFILE' %}</a>
 
                         <a class='button' id="signup" href="{% url 'logout' %}">{% trans 'LOG OUT' %}</a>
 

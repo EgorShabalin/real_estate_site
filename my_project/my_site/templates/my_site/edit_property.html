@@ -1,0 +1,374 @@
+{% extends 'my_site/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="edit_object">
+
+    <center>
+
+        <h2>{% trans 'EDIT PROPERTY' %}</h2>
+
+        <form method='post' enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <table class="edit_object_table">
+
+                <tr>
+                    <td>
+
+                        <label for="title">{% trans "Title" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.title }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="price">{% trans "Price" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.price }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="province">{% trans "Province" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.province }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="district">{% trans "District" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.district }}
+
+                    </td>
+                
+                </tr>
+                
+                <tr>
+
+                    <td>
+
+                        <label for="address">{% trans "Address" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.address }}
+
+                    </td>
+                
+                </tr>            
+
+                <tr>
+                    <td>
+
+                        <label for="floor_number">{% trans "Floor number" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.floor_number }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="total_floors">{% trans "Total floors" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.total_floors }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="parking">{% trans "Parking" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.parking }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="rooms">{% trans "Rooms" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.rooms }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="area">{% trans "Area" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.area }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="heating">{% trans "Heating" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.heating }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="elevator">{% trans "Elevator" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.elevator }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="frontage">{% trans "Frontage" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.frontage }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="iskan">{% trans "Iskan" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.iskan }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="expertise">{% trans "Expertise" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.expertise }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="residence_permit">{% trans "Residence permit" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.residence_permit }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="description">{% trans "Description" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.description }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="category">{% trans "Category" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.category }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="type_of_deal">{% trans "Type of deal" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.type_of_deal }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="active">{% trans "Active" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.active }}
+
+                    </td>
+                
+                </tr>
+
+                {% if form.errors or form.non_field_errors %}
+
+                    <div>
+
+                        {% for field in form %}
+
+                        {{ field.errors }}
+                        
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+            </table>
+
+            <h3>{% trans "Photos" %}</h3>
+            {{ formset.management_form }}
+            {% for photo_form in formset %}
+                <div class="photo-form">
+                    {{ photo_form.id }}
+                    <label for="{{ photo_form.photo.id_for_label }}">{% trans "Photo" %}:</label>
+                    {{ photo_form.photo }}
+                    {% if photo_form.instance.pk %}
+                        <label for="{{ photo_form.DELETE.id_for_label }}">{% trans "Delete" %}:</label>
+                        {{ photo_form.DELETE }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            {% if form.errors or formset.errors %}
+                <div class="errors">
+                    {% for field in form %}
+                        {{ field.errors }}
+                    {% endfor %}
+                    {% for form in formset %}
+                        {% for field in form %}
+                            {{ field.errors }}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <button id='button' class="button">{% trans "SAVE" %}</button>
+        
+        </form>
+
+    </center>
+
+</div>
+
+
+{% endblock %}

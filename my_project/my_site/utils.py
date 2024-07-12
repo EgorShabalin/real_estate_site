@@ -58,39 +58,48 @@ def get_prices(price):
 
 
 def get_usd(price):
-    price = price.replace(" ", "")
-    price = float(price)
-    rates = get_exchange_rates()
-    for k, v in rates.items():
-        if k == "USD":
-            rate = v["forex_selling"]
+    try:
+        price = price.replace(" ", "")
+        price = float(price)
+        rates = get_exchange_rates()
+        for k, v in rates.items():
+            if k == "USD":
+                rate = v["forex_selling"]
 
-    usd_price = (price / float(rate)) * n
+        usd_price = (price / float(rate)) * n
+    except:
+        usd_price = 0
 
     return int(usd_price)
 
 
 def get_eur(price):
-    price = price.replace(" ", "")
-    price = float(price)
-    rates = get_exchange_rates()
-    for k, v in rates.items():
-        if k == "EUR":
-            rate = v["forex_selling"]
+    try:
+        price = price.replace(" ", "")
+        price = float(price)
+        rates = get_exchange_rates()
+        for k, v in rates.items():
+            if k == "EUR":
+                rate = v["forex_selling"]
 
-    eur_price = (price / float(rate)) * n
+        eur_price = (price / float(rate)) * n
+    except:
+        eur_price = 0
 
-    return int(eur_price)
+        return int(eur_price)
 
 
 def get_rub(price):
-    price = price.replace(" ", "")
-    price = float(price)
-    rates = get_exchange_rates()
-    for k, v in rates.items():
-        if k == "RUB":
-            rate = v["forex_selling"]
+    try:
+        price = price.replace(" ", "")
+        price = float(price)
+        rates = get_exchange_rates()
+        for k, v in rates.items():
+            if k == "RUB":
+                rate = v["forex_selling"]
 
-    rub_price = (price / float(rate)) * n
+        rub_price = (price / float(rate)) * n
+    except:
+        rub_price = 0
 
     return int(rub_price)

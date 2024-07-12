@@ -1,0 +1,71 @@
+{% extends 'my_site/base.html' %}
+
+{% load i18n %}
+
+{% load number_filters %}
+
+{% load price_converter %}
+
+{% block content %}
+
+{% if request.user.is_staff %}
+
+<h2 class='page_heading'>{% trans 'DASHBOARD' %}</h2>
+
+<div class='content'>
+    <div class='content'>
+
+        <h3>{% trans 'Properties for Sale' %}</h3>
+        <div class='content'>
+            <a class='button' id="button" href={% url 'my_site:new_property' %}>{% trans 'ADD' %}</a>
+            {% for property in properties %}
+            {% if property.type_of_deal == 'SALE' %}
+            <div class='line_container'>
+                <p><a class='button' href={% url 'my_site:delete_property' property.id %}>{% trans 'DELETE' %}</a></p>
+                <p><a class='button' href={% url 'my_site:edit_property' property.id %}>{% trans 'EDIT' %}</a></p>
+                <p>{{ property }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        
+
+        <h3>{% trans 'Properties for Rent' %}</h3>
+        <div class='content'>
+            <a class='button' id="button" href="#">{% trans 'ADD' %}</a>
+            {% for property in properties %}
+            {% if property.type_of_deal == 'RENT' %}
+            <div class='line_container'>
+                <p><a class='button' href={% url 'my_site:delete_property' property.id %}>{% trans 'DELETE' %}</a></p>
+                <p><a class='button' href={% url 'my_site:edit_property' property.id %}>{% trans 'EDIT' %}</a></p>
+                <p>{{ property }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <h3>{% trans 'Blog posts' %}</h3>
+        <div class='content'>
+            {% for post in blog_posts %}
+
+            <p>{{ post }}</p>
+
+            {% endfor %}
+        </div>
+
+        <h3>{% trans 'Team mates' %}</h3>
+        <div class='content'>
+            {% for mate in team_mates %}
+
+            <p>{{ mate }}</p>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endif %}
+
+{% endblock %}

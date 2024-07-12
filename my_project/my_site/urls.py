@@ -39,4 +39,8 @@ urlpatterns = [
     path("team/", team, name="team"),
     path("set-language/", set_language, name="set_language"),
     path("exchange_rates/", exchange_rates, name="exchange_rates"),
+    path("dashboard/", dashboard, name="dashboard"),
+    path("new_property/", new_property, name="new_property"),
+    path("edit_property/<int:pk>/", edit_property, name="edit_property"),
+    path("delete_property/<int:pk>/", delete_property, name="delete_property"),
 ]
