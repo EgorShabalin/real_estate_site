@@ -176,6 +176,22 @@ class Property(models.Model):
     description = models.TextField(
         "description",
     )
+    en_description = models.TextField(
+        "description",
+        default="",
+    )
+    tr_description = models.TextField(
+        "description",
+        default="",
+    )
+    ru_description = models.TextField(
+        "description",
+        default="",
+    )
+    de_description = models.TextField(
+        "description",
+        default="",
+    )
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,

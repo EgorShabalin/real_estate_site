@@ -69,7 +69,7 @@ def get_exchange_rates():
     url = "https://www.tcmb.gov.tr/kurlar/today.xml"
 
     # Number of retries
-    max_retries = 3
+    max_retries = 5
     success = False
 
     # File name to save XML data

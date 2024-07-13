@@ -363,7 +363,29 @@
 
             <div class='description_text'>
 
-                <p>{{ property_detail.description }}</p>
+                <!--<p>{{ property_detail.description }}</p>-->
+
+                {% get_current_language as current_language %}
+
+                {% get_available_languages as available_languages %}
+
+                {% if current_language == 'tr' %}
+
+                <p>{{ property_detail.tr_description|linebreaksbr }}</p>
+
+                {% elif current_language == 'en' %}
+
+                <p>{{ property_detail.en_description|linebreaksbr }}</p>
+
+                {% elif current_language == 'ru' %}
+
+                <p>{{ property_detail.ru_description|linebreaksbr }}</p>
+
+                {% elif current_language == 'de' %}
+
+                <p>{{ property_detail.de_description|linebreaksbr }}</p>
+
+                {% endif %}
 
                 
             

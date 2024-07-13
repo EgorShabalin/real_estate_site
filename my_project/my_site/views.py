@@ -46,6 +46,19 @@ def property_detail_view(request, pk):
     property_detail = get_object_or_404(Property, pk=pk, active=True)
     images = property_detail.photos.all()
 
+    if not property_detail.en_description:
+        property_detail.en_description = translate(property_detail.description, "en")
+        property_detail.save()
+    if not property_detail.tr_description:
+        property_detail.tr_description = translate(property_detail.description, "tr")
+        property_detail.save()
+    if not property_detail.ru_description:
+        property_detail.ru_description = translate(property_detail.description, "ru")
+        property_detail.save()
+    if not property_detail.de_description:
+        property_detail.de_description = translate(property_detail.description, "de")
+        property_detail.save()
+
     return render(
         request,
         "my_site/property_detail.html",
