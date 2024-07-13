@@ -234,10 +234,6 @@ def team(request):
 def exchange_rates(request):
     try:
         rates = get_exchange_rates()
-        usd_buy = ""
-        usd_sell = ""
-        eur_buy = ""
-        eur_sell = ""
         for k, v in rates.items():
             if k == "USD":
                 usd_buy = v["forex_buying"]
@@ -270,20 +266,22 @@ def exchange_rates(request):
     )
 
 
+@login_required
 def dashboard(request):
-    properties = Property.objects.all()
-    blog_posts = Blog.objects.all()
-    team_mates = Team.objects.all()
+    if request.user.is_staff:
+        properties = Property.objects.all()
+        blog_posts = Blog.objects.all()
+        team_mates = Team.objects.all()
 
-    return render(
-        request,
-        "my_site/dashboard.html",
-        {
-            "properties": properties,
-            "blog_posts": blog_posts,
-            "team_mates": team_mates,
-        },
-    )
+        return render(
+            request,
+            "my_site/dashboard.html",
+            {
+                "properties": properties,
+                "blog_posts": blog_posts,
+                "team_mates": team_mates,
+            },
+        )
 
 
 @login_required
@@ -455,34 +453,40 @@ def delete_team_mate(request, pk):
         return redirect("my_site:dashboard")
 
 
+@login_required
 def dash_properties(request):
-    properties = Property.objects.all()
-    return render(
-        request,
-        "my_site/dash_properties.html",
-        {
-            "properties": properties,
-        },
-    )
+    if request.user.is_staff:
+        properties = Property.objects.all()
+        return render(
+            request,
+            "my_site/dash_properties.html",
+            {
+                "properties": properties,
+            },
+        )
 
 
+@login_required
 def dash_blog(request):
-    blog_posts = Blog.objects.all()
-    return render(
-        request,
-        "my_site/dash_blog.html",
-        {
-            "blog_posts": blog_posts,
-        },
-    )
+    if request.user.is_staff:
+        blog_posts = Blog.objects.all()
+        return render(
+            request,
+            "my_site/dash_blog.html",
+            {
+                "blog_posts": blog_posts,
+            },
+        )
 
 
+@login_required
 def dash_team(request):
-    team_mates = Team.objects.all()
-    return render(
-        request,
-        "my_site/dash_team.html",
-        {
-            "team_mates": team_mates,
-        },
-    )
+    if request.user.is_staff:
+        team_mates = Team.objects.all()
+        return render(
+            request,
+            "my_site/dash_team.html",
+            {
+                "team_mates": team_mates,
+            },
+        )
