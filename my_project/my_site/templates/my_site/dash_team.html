@@ -1,0 +1,44 @@
+{% extends 'my_site/base.html' %}
+
+{% load i18n %}
+
+{% load number_filters %}
+
+{% load price_converter %}
+
+{% block content %}
+
+{% if request.user.is_staff %}
+
+<h2 class='page_heading'>{% trans 'DASHBOARD' %}</h2>
+
+<div class='content'>
+    <div class='line_container'>
+        <p><a class='button' href={% url 'my_site:dashboard' %}>{% trans 'ALL' %}</a></p>
+        <p><a class='button' href={% url 'my_site:dash_properties' %}>{% trans 'PROPERTIES' %}</a></p>
+        <p><a class='button' href={% url 'my_site:dash_blog' %}>{% trans 'BLOG' %}</a></p>
+        <p><a class='button' href={% url 'my_site:dash_team' %}>{% trans 'TEAM' %}</a></p>
+    </div>
+</div>
+
+<div class='content'>
+    <div class='content'>
+        <h3>{% trans 'Team mates' %}</h3>
+        <div class='content'>
+            <a class='button' style='background-color: lightgreen; color: black;' id="button" href={% url 'my_site:new_team_mate' %}>{% trans 'ADD' %}</a>
+            {% for mate in team_mates %}
+            <div class='line_container'>
+                <p><a class='button' style='background-color: tomato; color: black;' href={% url 'my_site:delete_team_mate' mate.id %}>{% trans 'DELETE' %}</a></p>
+                <p><a class='button' style='background-color: orange; color: black;' href={% url 'my_site:edit_team_mate' mate.id %}>{% trans 'EDIT' %}</a></p>
+                <p>{{ mate }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endif %}
+
+{% endblock %}

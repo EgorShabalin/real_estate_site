@@ -1,0 +1,240 @@
+{% extends 'my_site/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="edit_object">
+
+    <center>
+
+        <h2>{% trans 'EDIT BLOG POST' %}</h2>
+
+        <form method='post' enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <table class="edit_object_table">
+
+                <tr>
+                    <td>
+
+                        <label for="title">{% trans "Original Title" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.title }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="text">{% trans "Original Text" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.text }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="en_title">{% trans "EN Title" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.en_title }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="en_text">{% trans "EN_Text" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.en_text }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="tr_title">{% trans "TR Title" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.tr_title }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="tr_text">{% trans "TR Text" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.tr_text }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="ru_title">{% trans "RU Title" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.ru_title }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="ru_text">{% trans "RU Text" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.ru_text }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="de_title">{% trans "DE Title" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.de_title }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="de_text">{% trans "DE Text" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.de_text }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="active">{% trans "Active" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.active }}
+
+                    </td>
+                
+                </tr>
+
+                
+
+                {% if form.errors or form.non_field_errors %}
+
+                    <div>
+
+                        {% for field in form %}
+
+                        {{ field.errors }}
+                        
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+            </table>
+
+            <h3>{% trans "Images" %}</h3>
+            {{ formset.management_form }}
+            {% for blog_photo_form in formset %}
+                <div class="photo-form">
+                    {{ blog_photo_form.id }}
+                    <label for="{{ blog_photo_form.image.id_for_label }}">{% trans "Image" %}:</label>
+                    {{ blog_photo_form.image }}
+                    {% if blog_photo_form.instance.pk %}
+                        <label for="{{ blog_photo_form.DELETE.id_for_label }}">{% trans "Delete" %}:</label>
+                        {{ blog_photo_form.DELETE }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            {% if form.errors or formset.errors %}
+                <div class="errors">
+                    {% for field in form %}
+                        {{ field.errors }}
+                    {% endfor %}
+                    {% for form in formset %}
+                        {% for field in form %}
+                            {{ field.errors }}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        
+            <button id='button' class="button">{% trans "SAVE" %}</button>
+        
+        </form>
+
+    </center>
+
+</div>
+
+
+{% endblock %}

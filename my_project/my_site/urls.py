@@ -43,4 +43,13 @@ urlpatterns = [
     path("new_property/", new_property, name="new_property"),
     path("edit_property/<int:pk>/", edit_property, name="edit_property"),
     path("delete_property/<int:pk>/", delete_property, name="delete_property"),
+    path("new_blog_post/", new_blog_post, name="new_blog_post"),
+    path("edit_blog_post/<int:pk>/", edit_blog_post, name="edit_blog_post"),
+    path("delete_blog_post/<int:pk>/", delete_blog_post, name="delete_blog_post"),
+    path("new_team_mate/", new_team_mate, name="new_team_mate"),
+    path("edit_team_mate/<int:pk>/", edit_team_mate, name="edit_team_mate"),
+    path("delete_team_mate/<int:pk>/", delete_team_mate, name="delete_team_mate"),
+    path("dashboard/properties/", dash_properties, name="dash_properties"),
+    path("dashboard/blog/", dash_blog, name="dash_blog"),
+    path("dashboard/team/", dash_team, name="dash_team"),
 ]

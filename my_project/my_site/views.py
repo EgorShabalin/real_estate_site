@@ -19,6 +19,10 @@ from .forms import (
     NewPropertyForm,
     EditPropertyForm,
     PhotoFormSet,
+    NewBlogPostForm,
+    EditBlogPostForm,
+    BlogPhotoFormSet,
+    NewTeamMateForm,
 )
 
 from .translation import translate
@@ -336,3 +340,149 @@ def delete_property(request, pk):
         return redirect("my_site:dashboard")
     else:
         return redirect("my_site:dashboard")
+
+
+@login_required
+def new_blog_post(request):
+    if request.user.is_staff:
+        if request.method == "POST":
+            form = NewBlogPostForm(request.POST, request.FILES)
+            if form.is_valid():
+                post = form.save(commit=False)
+                formset = BlogPhotoFormSet(request.POST, request.FILES, instance=post)
+                if formset.is_valid():
+                    post.save()
+                    formset.save()
+                    return redirect("my_site:dashboard")
+        else:
+            form = NewBlogPostForm()
+            formset = BlogPhotoFormSet(instance=Blog())
+
+        return render(
+            request, "my_site/new_blog_post.html", {"form": form, "formset": formset}
+        )
+    else:
+        # Handle unauthorized access
+        return redirect("my_site:dashboard")
+
+
+@login_required
+def edit_blog_post(request, pk):
+    post = get_object_or_404(Blog, pk=pk)
+
+    if request.user.is_staff:
+        if request.method == "POST":
+            form = EditBlogPostForm(request.POST, request.FILES, instance=post)
+            formset = BlogPhotoFormSet(request.POST, request.FILES, instance=post)
+
+            if form.is_valid() and formset.is_valid():
+                form.save()
+                formset.save()
+                return redirect("my_site:dashboard")
+        else:
+            form = EditBlogPostForm(instance=post)
+            formset = BlogPhotoFormSet(instance=post)
+
+        return render(
+            request, "my_site/edit_blog_post.html", {"form": form, "formset": formset}
+        )
+
+
+@login_required
+def delete_blog_post(request, pk):
+    post = get_object_or_404(Blog, pk=pk)
+    if request.user.is_staff:
+        post.delete()
+        return redirect("my_site:dashboard")
+    else:
+        return redirect("my_site:dashboard")
+
+
+@login_required
+def new_team_mate(request):
+    if request.user.is_staff:
+        if request.method == "POST":
+            form = NewTeamMateForm(request.POST, request.FILES)
+            if form.is_valid():
+                post = form.save()
+                post.save()
+                return redirect("my_site:dashboard")
+        else:
+            form = NewTeamMateForm()
+
+        return render(
+            request,
+            "my_site/new_team_mate.html",
+            {
+                "form": form,
+            },
+        )
+    else:
+        # Handle unauthorized access
+        return redirect("my_site:dashboard")
+
+
+@login_required
+def edit_team_mate(request, pk):
+    mate = get_object_or_404(Team, pk=pk)
+
+    if request.user.is_staff:
+        if request.method == "POST":
+            form = NewTeamMateForm(request.POST, request.FILES, instance=mate)
+
+            if form.is_valid():
+                form.save()
+                return redirect("my_site:dashboard")
+        else:
+            form = NewTeamMateForm(instance=mate)
+
+        return render(
+            request,
+            "my_site/edit_team_mate.html",
+            {
+                "form": form,
+            },
+        )
+
+
+@login_required
+def delete_team_mate(request, pk):
+    mate = get_object_or_404(Team, pk=pk)
+    if request.user.is_staff:
+        mate.delete()
+        return redirect("my_site:dashboard")
+    else:
+        return redirect("my_site:dashboard")
+
+
+def dash_properties(request):
+    properties = Property.objects.all()
+    return render(
+        request,
+        "my_site/dash_properties.html",
+        {
+            "properties": properties,
+        },
+    )
+
+
+def dash_blog(request):
+    blog_posts = Blog.objects.all()
+    return render(
+        request,
+        "my_site/dash_blog.html",
+        {
+            "blog_posts": blog_posts,
+        },
+    )
+
+
+def dash_team(request):
+    team_mates = Team.objects.all()
+    return render(
+        request,
+        "my_site/dash_team.html",
+        {
+            "team_mates": team_mates,
+        },
+    )

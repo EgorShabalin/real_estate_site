@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 
-from .models import Property, Photo
+from .models import Property, Photo, Blog, BlogPhoto, Team
 
 from django.forms.models import inlineformset_factory
 
@@ -173,3 +173,83 @@ class PhotoForm(forms.ModelForm):
 PhotoFormSet = inlineformset_factory(
     Property, Photo, form=PhotoForm, extra=20, can_delete=True
 )
+
+
+class NewBlogPostForm(forms.ModelForm):
+
+    class Meta:
+        model = Blog
+        fields = (
+            "title",
+            "text",
+            "active",
+        )
+        widgets = {
+            "title": forms.TextInput(),
+            "text": forms.Textarea(),
+            "active": forms.CheckboxInput(),
+        }
+
+
+class EditBlogPostForm(forms.ModelForm):
+
+    class Meta:
+        model = Blog
+        fields = (
+            "title",
+            "text",
+            "en_title",
+            "en_text",
+            "tr_title",
+            "tr_text",
+            "ru_title",
+            "ru_text",
+            "de_title",
+            "de_text",
+            "active",
+        )
+        widgets = {
+            "title": forms.TextInput(),
+            "text": forms.Textarea(),
+            "en_title": forms.TextInput(),
+            "en_text": forms.Textarea(),
+            "tr_title": forms.TextInput(),
+            "tr_text": forms.Textarea(),
+            "ru_title": forms.TextInput(),
+            "ru_text": forms.Textarea(),
+            "de_title": forms.TextInput(),
+            "de_text": forms.Textarea(),
+            "active": forms.CheckboxInput(),
+        }
+
+
+class BlogPhotoForm(forms.ModelForm):
+    class Meta:
+        model = BlogPhoto
+        fields = ["image"]
+
+
+BlogPhotoFormSet = inlineformset_factory(
+    Blog, BlogPhoto, form=BlogPhotoForm, extra=1, can_delete=True
+)
+
+
+class NewTeamMateForm(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = (
+            "name",
+            "ava",
+            "phone",
+            "email",
+            "bio",
+            "active",
+        )
+        widgets = {
+            "name": forms.TextInput(),
+            "ava": forms.FileInput(),
+            "phone": forms.TextInput(),
+            "email": forms.TextInput(),
+            "bio": forms.TextInput(),
+            "active": forms.CheckboxInput(),
+        }

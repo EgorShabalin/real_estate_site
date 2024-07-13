@@ -212,13 +212,17 @@ class Property(models.Model):
 
     def __str__(self):
         return (
-            self.title
+            "ID"
+            + " "
+            + str(self.id)
+            + " | "
+            + str(self.title)
             + " | "
             + _("Created at: ")
-            + str(self.created_at)
+            + str(self.created_at)[:19]
             + " | "
             + _("Updated at: ")
-            + str(self.updated_at)
+            + str(self.updated_at)[:19]
         )
 
     class Meta:
@@ -287,7 +291,15 @@ class Blog(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.title
+        return (
+            self.title
+            + " | "
+            + _("Created at: ")
+            + str(self.created_at)[:19]
+            + " | "
+            + _("Updated at: ")
+            + str(self.updated_at)[:19]
+        )
 
 
 class BlogPhoto(models.Model):
@@ -328,4 +340,4 @@ class Team(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.name
+        return self.name + " | " + str(self.phone) + " | " + str(self.email)
